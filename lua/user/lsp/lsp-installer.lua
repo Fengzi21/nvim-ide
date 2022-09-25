@@ -12,6 +12,10 @@ local servers = {
   "bashls",
   "jsonls",
   "yamlls",
+  "rust_analyzer",
+  "ccls",
+  "fortls",
+  "taplo",
 }
 
 lsp_installer.setup()
