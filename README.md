@@ -16,10 +16,16 @@ sudo apt install xsel            # for X11
 
 sudo apt install wl-clipboard    # for wayland
 
+pip install pynvim
+
+npm i -g neovim
+
 sudo apt install fd-find
 
 sudo apt install fasd -y
 ```
+
+Delete WAYLAND_DISPLAY environment variable to suppress `clipboard: error invoking wl-cop: Failed to connect to a wayland server`
 
 
 ## Use SSH for cloning plugins
