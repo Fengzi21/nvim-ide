@@ -17,8 +17,7 @@ toggleterm.setup({
   insert_mappings = true, -- whether or not the open mapping applies in insert model
   terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
   persist_size = true,
-  -- direction = "float",
-  direction = "horizontal",
+  direction = "float",  -- 'float' | 'horizontal' or 'vertical'
   close_on_exit = true,
   shell = vim.o.shell,
   -- This field is only relevant if direction is set to 'float'
