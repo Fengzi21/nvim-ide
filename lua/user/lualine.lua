@@ -30,15 +30,16 @@ local conditions = {
 local config = {
   options = {
     -- Disable sections and component separators
-	section_separators = "",
-	component_separators = "",
-    theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
-      normal = { c = { fg = colors.fg, bg = colors.bg } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
-    },
+    section_separators = "",
+    component_separators = "",
+    theme = 'monokaipro'
+    -- theme = {
+    --   -- We are going to use lualine_c an lualine_x as left and
+    --   -- right section. Both are highlighted by c theme .  So we
+    --   -- are just setting default looks o statusline
+      -- normal = { c = { fg = colors.fg, bg = colors.bg } },
+      -- inactive = { c = { fg = colors.fg, bg = colors.bg } },
+    --   },
   },
   sections = {
     -- these are to remove the defaults
