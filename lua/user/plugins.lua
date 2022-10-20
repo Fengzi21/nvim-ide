@@ -1,3 +1,8 @@
+-- see more at
+-- https://github.com/tcmmichaelb139/.dotfiles
+-- https://github.com/LunarVim/nvim-basic-ide
+
+
 local fn = vim.fn
 
 -- Automatically install packer
@@ -49,35 +54,41 @@ return packer.startup(function(use)
   -- My plugins here
   use { "wbthomason/packer.nvim" } -- Have packer manage itself
   use { "nvim-lua/plenary.nvim" } -- Useful lua functions used by lots of plugins
-  use { "windwp/nvim-autopairs" } -- Autopairs, integrates with both cmp and treesitter
   use { "numToStr/Comment.nvim" }
   use { "JoosepAlviste/nvim-ts-context-commentstring" }
   use { "kyazdani42/nvim-web-devicons" }
   use { "kyazdani42/nvim-tree.lua" }
-  use { "akinsho/bufferline.nvim" }
   use { "moll/vim-bbye" }
-  use { "nvim-lualine/lualine.nvim" }
-  use { "akinsho/toggleterm.nvim" }
   use { "ahmedkhalf/project.nvim" }
   use { "lewis6991/impatient.nvim" }
   use { "lukas-reineke/indent-blankline.nvim" }
   use { "goolord/alpha-nvim" }
   use "folke/which-key.nvim"
 
+  -- statusline
+  use { 'nvim-lualine/lualine.nvim' }
+
+  -- bufferline
+  use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons' }
+
   -- Colorschemes
   use { "folke/tokyonight.nvim" }
   use { "lunarvim/darkplus.nvim" }
 
+  -- Autopairs
+  use { "windwp/nvim-autopairs" } -- integrates with both cmp and treesitter
+
   -- Transparent
   use { "xiyaowong/nvim-transparent" }
 
-  -- cmp plugins
+  -- cmp plugins for completion
   use { "hrsh7th/nvim-cmp" } -- The completion plugin
   use { "hrsh7th/cmp-buffer" } -- buffer completions
   use { "hrsh7th/cmp-path" } -- path completions
   use { "saadparwaiz1/cmp_luasnip" } -- snippet completions
   use { "hrsh7th/cmp-nvim-lsp" }
   use { "hrsh7th/cmp-nvim-lua" }
+  use { "onsails/lspkind-nvim" }
 
   -- snippets
   use { "L3MON4D3/LuaSnip" } --snippet engine
@@ -90,13 +101,15 @@ return packer.startup(function(use)
   use { "RRethy/vim-illuminate" }
 
   -- Telescope
+  use("nvim-lua/popup.nvim")
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { "nvim-telescope/telescope.nvim" }
 
   -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+
+  -- Toggle terminal
+  use { "akinsho/toggleterm.nvim" }
 
   -- Git
   use { "lewis6991/gitsigns.nvim" }
