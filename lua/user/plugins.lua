@@ -72,8 +72,8 @@ return packer.startup(function(use)
   use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons' }
 
   -- Colorschemes
-  -- use { "folke/tokyonight.nvim" }
-  -- use { "lunarvim/darkplus.nvim" }
+  use { "folke/tokyonight.nvim" }
+  use { "lunarvim/darkplus.nvim" }
   use {
     'https://gitlab.com/__tpb/monokai-pro.nvim',
     as = 'monokai-pro.nvim'
