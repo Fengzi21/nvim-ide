@@ -3,11 +3,18 @@ if not status_ok then
   return
 end
 
+
 local fmt = string.format
 
-toggleterm.setup({
+local conf = {
   -- size can be a number or function which is passed the current terminal
-  size = 20,
+  size = function (term)
+    if term.direction == 'vertical' then
+      return 80
+    elseif term.direction == 'horizontal' then
+      return 20
+    end
+  end,
   open_mapping = [[<c-\>]],
   hide_numbers = true, -- hide the number column in toggleterm buffers
   shade_filetypes = {},
@@ -35,7 +42,9 @@ toggleterm.setup({
       return fmt("%d:%s", term.id, term:_display_name())
     end
   },
-})
+}
+
+toggleterm.setup( conf )
 
 function _G.set_terminal_keymaps()
   local opts = { noremap = true }
@@ -76,7 +85,14 @@ function _PYTHON_TOGGLE()
   python:toggle()
 end
 
-local ipython = Terminal:new({ cmd = "ipython", hidden = true })
+local ipython = Terminal:new({
+  cmd = "ipython",
+  hidden = true,
+  direction = 'vertical',
+  name = 'IPython',
+  display_name = 'IPython',
+  -- TODO Add highlights 
+})
 function _IPYTHON_TOGGLE()
   ipython:toggle()
 end
