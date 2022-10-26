@@ -162,11 +162,15 @@ local mappings = {
 
   r = {
     name = "Repl",
-    s = { "<cmd>IronRepl<cr>", "Open a repl" },
+    s = { "<cmd>IronRepl<cr>", "Start a repl" },
     r = { "<cmd>IronRestart<cr>", "Restart the current repl" },
     f = { "<cmd>IronFocus<cr>", "Focus on the repl" },
     h = { "<cmd>IronHide<cr>", "Hide the repl window" },
     w = { "<cmd>IronWatch<cr>", "Send to repl after writing" },
+    e = { "<cmd>lua require('iron.core').send(nil, string.char(13))<cr>", "Carriage Return" },
+    i = { "<cmd>lua require('iron.core').send(nil, string.char(03))<cr>", "Interrupt" },
+    q = { "<cmd>lua require('iron.core').close_repl()<cr>", "Quit" },
+    c = { "<cmd>lua require('iron.core').send(nil, string.char(12))<cr>", "Clear" },
   },
 
   s = {
