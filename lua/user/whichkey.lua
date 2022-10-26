@@ -159,6 +159,20 @@ local mappings = {
       "Workspace Symbols",
     },
   },
+
+  r = {
+    name = "Repl",
+    s = { "<cmd>IronRepl<cr>", "Start a repl" },
+    r = { "<cmd>IronRestart<cr>", "Restart the current repl" },
+    f = { "<cmd>IronFocus<cr>", "Focus on the repl" },
+    h = { "<cmd>IronHide<cr>", "Hide the repl window" },
+    w = { "<cmd>IronWatch<cr>", "Send to repl after writing" },
+    e = { "<cmd>lua require('iron.core').send(nil, string.char(13))<cr>", "Carriage Return" },
+    i = { "<cmd>lua require('iron.core').send(nil, string.char(03))<cr>", "Interrupt" },
+    q = { "<cmd>lua require('iron.core').close_repl()<cr>", "Quit" },
+    c = { "<cmd>lua require('iron.core').send(nil, string.char(12))<cr>", "Clear" },
+  },
+
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -177,6 +191,7 @@ local mappings = {
     u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
     p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+    i = { "<cmd>lua _IPYTHON_TOGGLE()<cr>", "IPython" },
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },

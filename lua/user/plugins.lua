@@ -78,7 +78,6 @@ return packer.startup(function(use)
     'https://gitlab.com/__tpb/monokai-pro.nvim',
     as = 'monokai-pro.nvim'
   }
-  
 
   -- Autopairs
   use { "windwp/nvim-autopairs" } -- integrates with both cmp and treesitter
@@ -123,6 +122,9 @@ return packer.startup(function(use)
   use { "mfussenegger/nvim-dap" }
   use { "rcarriga/nvim-dap-ui" }
   use { "ravenxrz/DAPInstall.nvim" }
+
+  -- Interactive Repl
+  use { "hkupty/iron.nvim" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
