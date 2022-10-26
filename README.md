@@ -67,18 +67,30 @@ git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 scoop bucket add extras
 
 scoop install lazygit
+
+# or by conda 
+conda install -c conda-forge lazygit
 ```
 
 ### Ubuntu
 
 ```bash
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[0-35.]+')
-
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-
 sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
+
+# or by conda 
+conda install -c conda-forge lazygit
 ```
 
+### install [htop](https://github.com/htop-dev/htop)
+
+- by the system package manager
+- by conda
+
+```bash
+conda install -c conda-forge htop
+```
 
 ## Install Hack Nerd Font
 
