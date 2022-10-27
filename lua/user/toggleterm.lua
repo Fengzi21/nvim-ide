@@ -20,13 +20,24 @@ local conf = {
   shade_filetypes = {},
   shade_terminals = true,
   shading_factor = 2,
-  start_in_insert = true,
+  start_in_insert = false,
   insert_mappings = true, -- whether or not the open mapping applies in insert model
   terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
   persist_size = true,
   direction = "float",  -- 'float' | 'horizontal' or 'vertical'
   close_on_exit = true,
   shell = vim.o.shell,
+  highlights = {
+    Normal = {
+      link = 'Normal'
+    },
+    NormalFloat = {
+      link = 'Normal'
+    },
+    FloatBorder = {
+      link = 'Normal'
+    },
+  },
   -- This field is only relevant if direction is set to 'float'
   float_opts = {
     border = "curved",
@@ -87,7 +98,9 @@ end
 
 local ipython = Terminal:new({
   cmd = "ipython",
-  hidden = true,
+  hidden = false,
+  id = 7,
+  count = 7,
   direction = 'vertical',
   name = 'IPython',
   display_name = 'IPython',
@@ -96,3 +109,4 @@ local ipython = Terminal:new({
 function _IPYTHON_TOGGLE()
   ipython:toggle()
 end
+

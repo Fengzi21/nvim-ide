@@ -70,7 +70,8 @@ local setup = {
 }
 
 local opts = {
-  mode = "n", -- NORMAL mode
+  -- mode = "n", -- NORMAL mode
+  mode = { "n", "v", "x" }, -- NORMAL mode
   prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
@@ -162,15 +163,29 @@ local mappings = {
 
   r = {
     name = "Repl",
-    s = { "<cmd>IronRepl<cr>", "Start a repl" },
+    o = { "<cmd>IronRepl<cr>", "Start a repl" },
     r = { "<cmd>IronRestart<cr>", "Restart the current repl" },
     f = { "<cmd>IronFocus<cr>", "Focus on the repl" },
     h = { "<cmd>IronHide<cr>", "Hide the repl window" },
     w = { "<cmd>IronWatch<cr>", "Send to repl after writing" },
-    e = { "<cmd>lua require('iron.core').send(nil, string.char(13))<cr>", "Carriage Return" },
-    i = { "<cmd>lua require('iron.core').send(nil, string.char(03))<cr>", "Interrupt" },
-    q = { "<cmd>lua require('iron.core').close_repl()<cr>", "Quit" },
-    c = { "<cmd>lua require('iron.core').send(nil, string.char(12))<cr>", "Clear" },
+    s = {
+      name = "Send",
+      e = { "<cmd>lua require('iron.core').send(nil, string.char(13))<cr>", "Carriage Return" },
+      i = { "<cmd>lua require('iron.core').send(nil, string.char(03))<cr>", "Interrupt" },
+      q = { "<cmd>lua require('iron.core').close_repl()<cr>", "Quit" },
+      c = { "<cmd>lua require('iron.core').send(nil, string.char(12))<cr>", "Clear" },
+      M = { "<cmd>lua require('iron.core').send_motion()<cr>", "Send motion" },
+      v = { "<cmd>lua require('iron.core').visual_send()<cr>", "Send visual" },
+      f = { "<cmd>lua require('iron.core').send_file()<cr>", "Send file" },
+      l = { "<cmd>lua require('iron.core').send_line()<cr>", "Send line" },
+      m = { "<cmd>lua require('iron.core').send_mark()<cr>", "Send mark" },
+    },
+    m = {
+      name = 'Mark',
+      m = { "<cmd>lua require('iron.core').mark_motion()<cr>", "Mark motion" },
+      v = { "<cmd>lua require('iron.core').mark_visual()<cr>", "Mark visual" },
+      d = { "<cmd>lua require('iron.marks').drop_last()<cr>", "Mark drop" },
+    },
   },
 
   s = {
@@ -193,10 +208,19 @@ local mappings = {
     p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
     i = { "<cmd>lua _IPYTHON_TOGGLE()<cr>", "IPython" },
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+    h = { "<cmd>ToggleTerm size=20 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+    a = { "<cmd>ToggleTermToggleAll<cr>", "Toggle all terminal" },
+    s = {
+      name = "Send/Set",
+      n = { "<cmd>ToggleTermSetName<cr>", "Set terminal name" },
+      l = { "<cmd>ToggleTermSendCurrentLine 7<cr>", "Send current line to ipython" },
+      v = { "<cmd>ToggleTermSendVisualLines 7<cr>", "Send visual lines to ipython" },
+      b = { "<cmd>ToggleTermSendVisualSelection 7<CR>", "Send visually selected block to ipython"},
+    },
   },
 }
+
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
