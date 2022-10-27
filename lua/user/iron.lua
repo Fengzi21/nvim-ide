@@ -20,25 +20,26 @@ iron.setup {
     },
     -- How the repl window will be displayed
     -- See below for more information
-    repl_open_cmd = require("iron.view").split("40%", {
+    repl_open_cmd = require("iron.view").split("30%", {
       number = false
     }),
   },
   -- Iron doesn't set keymaps by default anymore.
   -- You can set them here or manually add keymaps to the functions in iron.core
+  -- I prefer set keymaps by which-key
   keymaps = {
-    send_motion = "<space><space>sc",
-    visual_send = "<space><space>sc",
+    send_motion = "<space><space>sM",
+    visual_send = "<space><space>sv",
     send_file = "<space><space>sf",
     send_line = "<space><space>sl",
     send_mark = "<space><space>sm",
-    mark_motion = "<space><space>mc",
-    mark_visual = "<space><space>mc",
+    mark_motion = "<space><space>mm",
+    mark_visual = "<space><space>mv",
     remove_mark = "<space><space>md",
-    cr = "<space><space>s<cr>",
-    interrupt = "<space><space>s<space>",
+    cr = "<space><space>se", -- Set Enter (Carriage Return) to repl
+    interrupt = "<space><space>si",
     exit = "<space><space>sq",
-    clear = "<space><space>cl",
+    clear = "<space><space>sc",
   },
   -- If the highlight is on, you can change how it looks
   -- For the available options, check nvim_set_hl
