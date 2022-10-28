@@ -27,6 +27,7 @@ local conf = {
   direction = "float",  -- 'float' | 'horizontal' or 'vertical'
   close_on_exit = true,
   shell = vim.o.shell,
+  auto_scroll = true,
   highlights = {
     Normal = {
       link = 'Normal'
@@ -102,9 +103,9 @@ local ipython = Terminal:new({
   id = 7,
   count = 7,
   direction = 'vertical',
+  auto_scroll = true,
   name = 'IPython',
   display_name = 'IPython',
-  -- TODO Add highlights 
 })
 function _IPYTHON_TOGGLE()
   ipython:toggle()
