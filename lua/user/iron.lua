@@ -20,8 +20,9 @@ iron.setup {
     },
     -- How the repl window will be displayed
     -- See below for more information
-    repl_open_cmd = require("iron.view").split("30%", {
-      number = false
+    repl_open_cmd = require("iron.view").split.vertical.botright("40%", {
+      number = false,
+      relativenumber = false,
     }),
   },
   -- Iron doesn't set keymaps by default anymore.
@@ -48,3 +49,7 @@ iron.setup {
   }
 }
 
+vim.cmd [[
+  set laststatus=3
+  highlight WinSeparator guibg=None
+]]
