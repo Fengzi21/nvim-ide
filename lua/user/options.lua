@@ -28,7 +28,7 @@ vim.opt.number = false                           -- set numbered lines
 vim.opt.relativenumber = true
 vim.opt.colorcolumn = '100'
 vim.opt.laststatus = 3
-vim.opt.showcmd = false
+vim.opt.showcmd = true
 vim.opt.ruler = false
 vim.opt.numberwidth = 2                         -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
@@ -38,6 +38,8 @@ vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 vim.opt.encoding = "utf-8"
 vim.opt.termencoding = "utf-8"
+vim.opt.eol = true
+vim.opt.fixeol = true
 vim.opt.fillchars.eob = " "
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")

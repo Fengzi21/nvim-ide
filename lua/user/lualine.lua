@@ -68,7 +68,7 @@ local function ins_left(component)
   table.insert(config.sections.lualine_c, component)
 end
 
--- Inserts a component in lualine_x ot right section
+-- Inserts a component in lualine_x at right section
 local function ins_right(component)
   table.insert(config.sections.lualine_x, component)
 end
@@ -102,8 +102,8 @@ ins_left {
     vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
     return '▊'
   end,
-  -- color = 'LualineMode',
-  color = { fg = colors.blue, gui = 'bold' },
+  color = 'LualineMode',
+  -- color = { fg = colors.blue, gui = 'bold' },
   padding = { left = 0, right = 0 },
 }
 
@@ -113,8 +113,8 @@ ins_left {
   padding = { left = 1, right = 1 },
 }
 
+-- neovim mode component
 ins_left {
-  -- neovim mode component
   function()
     -- auto change color according to neovim modes
     vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
@@ -124,13 +124,14 @@ ins_left {
   padding = { left = 0, right = 1 },
 }
 
-ins_left {
-  -- filesize component
-  'filesize',
-  cond = conditions.buffer_not_empty,
-  padding = { left = 0, right = 1 },
-}
+-- filesize component
+-- ins_left {
+--   'filesize',
+--   cond = conditions.buffer_not_empty,
+--   padding = { left = 0, right = 1 },
+-- }
 
+-- filename component
 ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
@@ -138,6 +139,7 @@ ins_left {
   padding = { left = 0, right = 1 },
 }
 
+-- curser location
 ins_left {
   'location',
   padding = { left = 1, right = 1 },
@@ -168,8 +170,8 @@ ins_left {
   end,
 }
 
+-- Lsp server name.
 ins_left {
-  -- Lsp server name .
   function()
     local msg = 'No Active Lsp'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -190,20 +192,22 @@ ins_left {
 }
 
 
-ins_right {
-  function()
-    return "Tab Size: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-  end
-}
+-- Tab Size
+-- ins_right {
+--   function()
+--     return "Tab Size: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+--   end
+-- }
 
 -- Add components to right sections
-ins_right {
-  'o:encoding', -- option component same as &encoding in viml
-  -- fmt = string.upper,
-  cond = conditions.hide_in_width,
-  color = { fg = colors.blue, gui = 'bold' },
-}
+-- ins_right {
+--   'o:encoding', -- option component same as &encoding in viml
+--   -- fmt = string.upper,
+--   cond = conditions.hide_in_width,
+--   color = { fg = colors.blue, gui = 'bold' },
+-- }
 
+-- file type
 ins_right {
   'filetype',
   -- fmt = string.upper,
@@ -211,15 +215,16 @@ ins_right {
   color = { fg = colors.blue, gui = 'bold' },
 }
 
+-- git branch
 ins_right {
   'branch',
   icon = '',
   color = { fg = colors.violet, gui = 'bold' },
 }
 
+-- git diff status
 ins_right {
   'diff',
-  -- Is it me or the symbol for modified us really weird
   symbols = { added = ' ', modified = '柳 ', removed = ' ' },
   diff_color = {
     added = { fg = colors.green },
@@ -231,11 +236,12 @@ ins_right {
 
 ins_right {
   function()
+    -- auto change color according to neovim modes
     vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
     return '▊'
   end,
-  -- color = 'LualineMode',
-  color = { fg = colors.blue, gui = 'bold' },
+  color = 'LualineMode',
+  -- color = { fg = colors.blue, gui = 'bold' },
   padding = { left = 1 },
 }
 

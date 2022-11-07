@@ -41,8 +41,11 @@ cd fasd
 PREFIX=$HOME/.local make install
 ```
 
-Delete WAYLAND_DISPLAY environment variable to suppress `clipboard: error invoking wl-cop: Failed to connect to a wayland server`
-
+- Delete `WAYLAND_DISPLAY` environment variable to suppress `clipboard: error invoking wl-cop: Failed to connect to a wayland server`
+- Suppress `nvim-treesitter` compilation error
+```
+conda install -c conda-forge gxx_linux-64
+```
 
 ## Use SSH for cloning plugins
 
