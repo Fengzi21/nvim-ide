@@ -35,9 +35,6 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Quick save
 keymap("n", "<C-s>", "<cmd>w!<CR>", opts)
 
--- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
@@ -103,3 +100,10 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- Terminal
+-- This not working
+-- keymap("n", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<cr>", opts)
+-- keymap("i", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<cr>", opts)
+-- keymap("v", "<C-i>", "<cmd>ToggleTermSendVisualLines 7<cr>", opts)
+-- keymap("x", "<C-i>", "<cmd>ToggleTermSendVisualSelection 7<cr>", opts)
