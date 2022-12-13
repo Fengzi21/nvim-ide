@@ -108,6 +108,19 @@ return packer.startup(function(use)
   use("nvim-lua/popup.nvim")
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { "nvim-telescope/telescope.nvim" }
+  use { "xiyaowong/telescope-emoji.nvim" }
+
+  -- Emoji
+  use { 'stevearc/dressing.nvim' } -- improve the default vim.ui interfaces
+  use({
+    "ziontee113/icon-picker.nvim",
+    config = function()
+      require("icon-picker").setup({
+        disable_legacy_commands = true
+      })
+    end,
+  })
+  use { "hrsh7th/cmp-emoji" } -- Markdown emoji
 
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }

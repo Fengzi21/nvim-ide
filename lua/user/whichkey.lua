@@ -96,6 +96,7 @@ local mappings = {
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+  ["E"] = { "<cmd>Telescope emoji<cr>", "Emoji Search" },
 
   p = {
     name = "Packer",
@@ -127,6 +128,13 @@ local mappings = {
       "<cmd>Gitsigns diffthis HEAD<cr>",
       "Diff",
     },
+  },
+
+  i = {
+    name = 'IconPick',
+    n = { "<cmd>IconPickerNormal<CR>", "Pick and insert icon to the buffer (normal)" },
+    i = { "<cmd>IconPickerInsert<CR>", "Pick and insert icon to the buffer (insert)" },
+    y = { "<cmd>IconPickerYank<CR>", "Pick and yank icon to register" },
   },
 
   l = {
