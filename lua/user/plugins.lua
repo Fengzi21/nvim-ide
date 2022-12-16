@@ -79,6 +79,9 @@ return packer.startup(function(use)
     as = 'monokai-pro.nvim'
   }
 
+  -- colorizer
+  use { 'norcalli/nvim-colorizer.lua' }
+
   -- Autopairs
   use { "windwp/nvim-autopairs" } -- integrates with both cmp and treesitter
 

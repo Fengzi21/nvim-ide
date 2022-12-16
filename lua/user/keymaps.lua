@@ -36,8 +36,10 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<C-s>", "<cmd>w!<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+keymap("n", "<A-j>", "<Esc>:m .+1<CR>==", opts)
+keymap("n", "<A-k>", "<Esc>:m .-2<CR>==", opts)
+keymap("n", "<A-Down>", "<Esc>:m .+1<CR>==", opts)
+keymap("n", "<A-Up>", "<Esc>:m .-2<CR>==", opts)
 
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
@@ -60,6 +62,8 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "<A-Down>", ":m .+1<CR>==", opts)
+keymap("v", "<A-Up>",   ":m .-2<CR>==", opts)
 
 -- Quick save
 keymap("v", "<C-s>", "<cmd>w!<CR>", opts)
