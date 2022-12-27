@@ -123,7 +123,14 @@ return packer.startup(function(use)
       })
     end,
   })
+
   use { "hrsh7th/cmp-emoji" } -- Markdown emoji
+
+  -- Markdown
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
 
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
