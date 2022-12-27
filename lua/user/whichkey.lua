@@ -169,6 +169,13 @@ local mappings = {
     },
   },
 
+  m = {
+    name = "Markdown",
+    p = { "<cmd>MarkdownPreview<CR>", "Preview Markdown" },
+    s = { "<cmd>MarkdownPreviewStop<CR>", "Stop Markdown Preview" },
+    t = { "<cmd>MarkdownPreviewToggle<CR>", "Toggle Markdown Preview" },
+  },
+
   r = {
     name = "Repl",
     o = { "<cmd>IronRepl<cr>", "Start a repl" },
