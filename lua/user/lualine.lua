@@ -193,19 +193,19 @@ ins_left {
 
 
 -- Tab Size
--- ins_right {
---   function()
---     return "Tab Size: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
---   end
--- }
+ins_right {
+  function()
+    return "Tab Size: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+  end
+}
 
 -- Add components to right sections
--- ins_right {
---   'o:encoding', -- option component same as &encoding in viml
---   -- fmt = string.upper,
---   cond = conditions.hide_in_width,
---   color = { fg = colors.blue, gui = 'bold' },
--- }
+ins_right {
+  'o:encoding', -- option component same as &encoding in viml
+  -- fmt = string.upper,
+  cond = conditions.hide_in_width,
+  color = { fg = colors.blue, gui = 'bold' },
+}
 
 -- file type
 ins_right {
