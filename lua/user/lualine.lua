@@ -33,7 +33,7 @@ local config = {
     section_separators = "",
     component_separators = "",
     globalstatus = true,
-    theme = 'monokaipro'
+    -- theme = 'monokai'
     -- theme = {
     --   -- We are going to use lualine_c an lualine_x as left and
     --   -- right section. Both are highlighted by c theme .  So we

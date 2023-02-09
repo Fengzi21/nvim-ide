@@ -73,11 +73,9 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use { "folke/tokyonight.nvim" }
-  use { "lunarvim/darkplus.nvim" }
-  use {
-    'https://gitlab.com/__tpb/monokai-pro.nvim',
-    as = 'monokai-pro.nvim'
-  }
+  use { 'numirias/semshi' }
+  use { 'tanvirtin/monokai.nvim' }
+  use { 'vim-python/python-syntax' }
 
   -- colorizer
   use { 'norcalli/nvim-colorizer.lua' }
