@@ -234,6 +234,11 @@ local mappings = {
       b = { "<cmd>ToggleTermSendVisualSelection 7<CR>", "Send visually selected block to ipython"},
     },
   },
+
+  T = {
+    name = "Toggle",
+    l = { "<cmd>set invrelativenumber<CR>", "Toggle relative number" },
+  },
 }
 
 which_key.setup(setup)

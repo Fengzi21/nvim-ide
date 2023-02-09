@@ -1,7 +1,7 @@
 -- local colorscheme = "tokyonight"
--- local colorscheme = "monokai"
+local colorscheme = "monokai"
 -- local colorscheme = "monokai_pro"
-local colorscheme = "monokai_soda"
+-- local colorscheme = "monokai_soda"
 
 
 vim.g.python_highlight_all = 1
