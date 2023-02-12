@@ -68,6 +68,9 @@ keymap("v", "<A-Up>",   ":m .-2<CR>==", opts)
 -- Quick save
 keymap("v", "<C-s>", "<cmd>w!<CR>", opts)
 
+-- Run Selected in Repl
+keymap("v", "<C-r>", "<cmd>lua require('iron.core').visual_send()<cr>", opts)
+
 -- Visual Block --
 -- Move text up and down
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
@@ -75,6 +78,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Quick save
 keymap("x", "<C-s>", "<cmd>w!<CR>", opts)
+
+-- Run Selected in Repl
+keymap("x", "<C-r>", "<cmd>lua require('iron.core').visual_send()<cr>", opts)
 
 -- Plugins --
 
