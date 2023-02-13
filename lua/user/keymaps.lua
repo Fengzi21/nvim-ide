@@ -115,5 +115,5 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 -- This not working
 -- keymap("n", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<cr>", opts)
 -- keymap("i", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<cr>", opts)
--- keymap("v", "<C-i>", "<cmd>ToggleTermSendVisualLines 7<cr>", opts)
--- keymap("x", "<C-i>", "<cmd>ToggleTermSendVisualSelection 7<cr>", opts)
+keymap("v", "<C-i>", "<cmd>ToggleTermSendVisualLines 7<CR>", opts)
+keymap("x", "<C-i>", "<cmd>ToggleTermSendVisualSelection 7<CR>", opts)

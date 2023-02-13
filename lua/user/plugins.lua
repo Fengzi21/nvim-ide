@@ -147,6 +147,9 @@ return packer.startup(function(use)
   -- Interactive Repl
   use { "hkupty/iron.nvim" }
 
+  -- Jupyter support
+  use { 'goerz/jupytext.vim' }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
