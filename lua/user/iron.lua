@@ -29,8 +29,10 @@ iron.setup {
   -- You can set them here or manually add keymaps to the functions in iron.core
   -- I prefer set keymaps by which-key
   keymaps = {
-    send_motion = "<space><space>sM",
-    visual_send = "<space><space>sv",
+    -- send_motion = "<space><space>sM",
+    -- visual_send = "<space><space>sv",
+    send_motion = "ctr", -- change to this for jupytext
+    visual_send = "ctr",
     send_file = "<space><space>sf",
     send_line = "<space><space>sl",
     send_mark = "<space><space>sm",

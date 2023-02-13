@@ -44,6 +44,11 @@ keymap("n", "<A-Up>", "<Esc>:m .-2<CR>==", opts)
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 
+-- Jupyter in Repl
+vim.cmd [[ 
+  nmap ]x ctrih/^# %%<CR><CR>
+]]
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)

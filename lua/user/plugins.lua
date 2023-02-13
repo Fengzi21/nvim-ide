@@ -148,7 +148,10 @@ return packer.startup(function(use)
   use { "hkupty/iron.nvim" }
 
   -- Jupyter support
-  use { 'goerz/jupytext.vim' }
+  use { 'kana/vim-textobj-user' }
+  use { 'kana/vim-textobj-line' }
+  use { 'GCBallesteros/vim-textobj-hydrogen' }  -- form from 'goerz/jupytext.vim'
+  use { 'GCBallesteros/jupytext.vim' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
