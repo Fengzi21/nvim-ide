@@ -150,3 +150,9 @@ choco install nerdfont-hack
 ### Linux or macOS
 1. Follow the [Quick Installation](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack#quick-installation)
 2. By [getnf](https://github.com/ronniedroid/getnf.git)
+
+## Jupytext
+```bash
+conda install -c conda-forge pynvim
+conda install -c conda-forge jupytext
+```
