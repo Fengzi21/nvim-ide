@@ -2,7 +2,7 @@
 
 
 vim.g.jupytext_fmt = 'py'
-vim.g.jupytext_style = 'hydrogen'
+vim.g.jupytext_style = 'percent'
 
 -- Send cell to IronRepl and move to next cell.
 -- Depends on the text object defined in vim-textobj-hydrogen
