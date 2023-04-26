@@ -73,7 +73,7 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use { "folke/tokyonight.nvim" }
-  use { 'numirias/semshi' }
+  use { 'numirias/semshi', run = ':UpdateRemotePlugins' }
   use { 'tanvirtin/monokai.nvim' }
   use { 'vim-python/python-syntax' }
 
