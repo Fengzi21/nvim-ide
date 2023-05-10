@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 local servers = {
-  "sumneko_lua",
+  "lua_ls",
   "cssls",
   "html",
   "tsserver",
@@ -33,9 +33,14 @@ for _, server in pairs(servers) do
     capabilities = require("user.lsp.handlers").capabilities,
   }
 
-  if server == "sumneko_lua" then
-    local sumneko_opts = require "user.lsp.settings.sumneko_lua"
-    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+  if server == "lua_ls" then
+    local luals_opts = require "user.lsp.settings.luals"
+    opts = vim.tbl_deep_extend("force", luals_opts, opts)
+  end
+
+  if server == "pylsp" then
+    local pylsp_opts = require "user.lsp.settings.pylsp"
+    opts = vim.tbl_deep_extend("force", pylsp_opts, opts)
   end
 
   if server == "pyright" then

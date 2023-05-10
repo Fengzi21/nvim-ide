@@ -22,17 +22,16 @@ null_ls.setup {
     -- formatting.black.with {
     --   extra_args = {
     --     "--fast",
-    --     "--line-length=100",
+    --     "--line-length=120",
     --   },
     -- },
     formatting.blue.with {
       extra_args = {
         "--fast",
-        "--line-length=100",
+        "--line-length=120",
       },
     },
     formatting.stylua,
-    formatting.google_java_format,
     formatting.rustfmt,
     diagnostics.flake8,
   },
