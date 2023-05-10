@@ -96,6 +96,7 @@ local mappings = {
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+  ["E"] = { "<cmd>Telescope emoji<cr>", "Emoji Search" },
 
   p = {
     name = "Packer",
@@ -129,6 +130,13 @@ local mappings = {
     },
   },
 
+  i = {
+    name = 'IconPick',
+    n = { "<cmd>IconPickerNormal<CR>", "Pick and insert icon to the buffer (normal)" },
+    i = { "<cmd>IconPickerInsert<CR>", "Pick and insert icon to the buffer (insert)" },
+    y = { "<cmd>IconPickerYank<CR>", "Pick and yank icon to register" },
+  },
+
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -159,6 +167,13 @@ local mappings = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
     },
+  },
+
+  m = {
+    name = "Markdown",
+    p = { "<cmd>MarkdownPreview<CR>", "Preview Markdown" },
+    s = { "<cmd>MarkdownPreviewStop<CR>", "Stop Markdown Preview" },
+    t = { "<cmd>MarkdownPreviewToggle<CR>", "Toggle Markdown Preview" },
   },
 
   r = {
@@ -202,6 +217,7 @@ local mappings = {
 
   t = {
     name = "Terminal",
+    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
@@ -218,6 +234,11 @@ local mappings = {
       v = { "<cmd>ToggleTermSendVisualLines 7<cr>", "Send visual lines to ipython" },
       b = { "<cmd>ToggleTermSendVisualSelection 7<CR>", "Send visually selected block to ipython"},
     },
+  },
+
+  T = {
+    name = "Toggle",
+    l = { "<cmd>set invrelativenumber<CR>", "Toggle relative number" },
   },
 }
 

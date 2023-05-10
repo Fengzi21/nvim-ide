@@ -35,15 +35,19 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Quick save
 keymap("n", "<C-s>", "<cmd>w!<CR>", opts)
 
--- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+keymap("n", "<A-j>", "<Esc>:m .+1<CR>==", opts)
+keymap("n", "<A-k>", "<Esc>:m .-2<CR>==", opts)
+keymap("n", "<A-Down>", "<Esc>:m .+1<CR>==", opts)
+keymap("n", "<A-Up>", "<Esc>:m .-2<CR>==", opts)
 
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+
+-- Jupyter in Repl
+vim.cmd [[ 
+  nmap ]x ctrih/^# %%<CR><CR>
+]]
 
 -- Insert --
 -- Press jk fast to enter
@@ -63,9 +67,14 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "<A-Down>", ":m .+1<CR>==", opts)
+keymap("v", "<A-Up>",   ":m .-2<CR>==", opts)
 
 -- Quick save
 keymap("v", "<C-s>", "<cmd>w!<CR>", opts)
+
+-- Run Selected in Repl
+keymap("v", "<C-r>", "<cmd>lua require('iron.core').visual_send()<cr>", opts)
 
 -- Visual Block --
 -- Move text up and down
@@ -74,6 +83,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Quick save
 keymap("x", "<C-s>", "<cmd>w!<CR>", opts)
+
+-- Run Selected in Repl
+keymap("x", "<C-r>", "<cmd>lua require('iron.core').visual_send()<cr>", opts)
 
 -- Plugins --
 
@@ -103,3 +115,10 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- Terminal
+-- This not working
+-- keymap("n", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<cr>", opts)
+-- keymap("i", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<cr>", opts)
+keymap("v", "<C-i>", "<cmd>ToggleTermSendVisualLines 7<CR>", opts)
+keymap("x", "<C-i>", "<cmd>ToggleTermSendVisualSelection 7<CR>", opts)

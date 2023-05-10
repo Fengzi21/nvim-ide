@@ -73,7 +73,11 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use { "folke/tokyonight.nvim" }
-  use { "lunarvim/darkplus.nvim" }
+  use { 'numirias/semshi', run = ':UpdateRemotePlugins' }
+  use { 'vim-python/python-syntax' }
+
+  -- colorizer
+  use { 'norcalli/nvim-colorizer.lua' }
 
   -- Autopairs
   use { "windwp/nvim-autopairs" } -- integrates with both cmp and treesitter
@@ -104,6 +108,26 @@ return packer.startup(function(use)
   use("nvim-lua/popup.nvim")
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { "nvim-telescope/telescope.nvim" }
+  use { "xiyaowong/telescope-emoji.nvim" }
+
+  -- Emoji
+  use { 'stevearc/dressing.nvim' } -- improve the default vim.ui interfaces
+  use({
+    "ziontee113/icon-picker.nvim",
+    config = function()
+      require("icon-picker").setup({
+        disable_legacy_commands = true
+      })
+    end,
+  })
+
+  use { "hrsh7th/cmp-emoji" } -- Markdown emoji
+
+  -- Markdown
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
 
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
@@ -121,6 +145,12 @@ return packer.startup(function(use)
 
   -- Interactive Repl
   use { "hkupty/iron.nvim" }
+
+  -- Jupyter support
+  use { 'kana/vim-textobj-user' }
+  use { 'kana/vim-textobj-line' }
+  use { 'GCBallesteros/vim-textobj-hydrogen' }  -- form from 'goerz/jupytext.vim'
+  use { 'GCBallesteros/jupytext.vim' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
