@@ -1,13 +1,22 @@
 # IDE config for [Neovim](https://neovim.io/) with [Lua](https://www.lua.org/)
 
-This repo is based on [A Basic Stable IDE config for Neovim](https://github.com/LunarVim/nvim-basic-ide) and [Neovim from scratch](https://github.com/LunarVim/Neovim-from-scratch).
+This repo is based on [Neovim from scratch](https://github.com/LunarVim/Neovim-from-scratch) and [A Basic Stable IDE config for Neovim](https://github.com/LunarVim/nvim-basic-ide).
 
 
-## Install dependencies
+## Features
+- To be added!
+
+
+## Install Dependencies
 
 ### Python and Node.js client
 ```bash
+# by pip
 pip install pynvim
+
+# by conda
+conda install -c conda-forge pynvim
+
 npm i -g neovim
 ```
 
@@ -23,7 +32,7 @@ sudo apt-get install ripgrep
 # for macOS
 brew install ripgrep
 
-# or by cargo in all platform
+# or by cargo in all platforms
 cargo install ripgrep
 ```
 
@@ -153,6 +162,5 @@ choco install nerdfont-hack
 
 ## Jupytext
 ```bash
-conda install -c conda-forge pynvim
 conda install -c conda-forge jupytext
 ```
