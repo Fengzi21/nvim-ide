@@ -106,6 +106,7 @@ git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 - For python: `conda install -c conda-forge black blue`
 - For java: Use [Prettier](https://prettier.io/docs/en/install.html)
 - For rust: Use [rustfmt](https://github.com/rust-lang/rustfmt)
+- For Fortran: `conda install -c conda-forge fprettify`
 
 
 ## Install [lazygit](https://github.com/jesseduffield/lazygit)

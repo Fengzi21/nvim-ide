@@ -33,6 +33,7 @@ null_ls.setup {
     },
     formatting.stylua,
     formatting.rustfmt,
+    formatting.fprettify,
     diagnostics.flake8,
   },
 }
