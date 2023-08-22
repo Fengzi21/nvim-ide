@@ -33,7 +33,11 @@ null_ls.setup {
     },
     formatting.stylua,
     formatting.rustfmt,
-    formatting.fprettify,
+    formatting.fprettify.with {
+      extra_args = {
+        "--indent=4"
+      },
+    },
     diagnostics.flake8,
   },
 }
