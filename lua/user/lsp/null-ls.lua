@@ -35,7 +35,7 @@ null_ls.setup {
     formatting.rustfmt,
     formatting.fprettify.with {
       extra_args = {
-        "--indent=4"
+        "--indent=2"
       },
     },
     diagnostics.flake8,
