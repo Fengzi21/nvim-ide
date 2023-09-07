@@ -65,6 +65,9 @@ return packer.startup(function(use)
   use { "goolord/alpha-nvim" }
   use "folke/which-key.nvim"
 
+  -- colorcolumn
+  use { "m4xshen/smartcolumn.nvim" }
+
   -- statusline
   use { 'nvim-lualine/lualine.nvim' }
 
