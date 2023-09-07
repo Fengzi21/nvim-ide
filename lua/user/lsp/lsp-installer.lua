@@ -54,10 +54,10 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
   end
 
-  if server == "fortls" then
-    local pyright_opts = require "user.lsp.settings.fortls"
-    opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-  end
+  -- if server == "fortls" then
+  --   local pyright_opts = require "user.lsp.settings.fortls"
+  --   opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+  -- end
 
   if server == "clangd" then
     local pyright_opts = require "user.lsp.settings.clangd"
