@@ -22,6 +22,7 @@ local servers = {
   "jdtls",
   "ltex",
   "marksman",
+  "asm_ls"
 }
 
 lsp_installer.setup()
