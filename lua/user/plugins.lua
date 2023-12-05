@@ -156,6 +156,9 @@ return packer.startup(function(use)
   use { 'GCBallesteros/vim-textobj-hydrogen' }  -- form from 'goerz/jupytext.vim'
   use { 'GCBallesteros/jupytext.vim' }
 
+  -- for LaTeX
+  use { 'lervag/vimtex' }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
