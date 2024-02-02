@@ -41,7 +41,7 @@ dashboard.section.buttons.val = {
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
 local function footer()
-  return "Humble, Hungry and Smart"
+  return "NO PAIN, NO GAIN"
 end
 
 dashboard.section.footer.val = footer()
