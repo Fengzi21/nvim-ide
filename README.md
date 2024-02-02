@@ -102,7 +102,7 @@ git config --global --add url."git@github.com:".insteadOf "https://github.com/"
 
 ## Install language formatter
 
-- For lua: `cargo Install stylua`
+- For lua: `cargo install stylua`
 - For python: `conda install -c conda-forge black blue`
 - For java: Use [Prettier](https://prettier.io/docs/en/install.html)
 - For rust: Use [rustfmt](https://github.com/rust-lang/rustfmt)
@@ -165,3 +165,6 @@ choco install nerdfont-hack
 ```bash
 conda install -c conda-forge jupytext
 ```
+
+# Possible Issues
+- [Unknown function: SemshiBufWipeout](https://github.com/numirias/semshi/issues/60)
