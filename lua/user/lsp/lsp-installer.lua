@@ -22,7 +22,8 @@ local servers = {
   "jdtls",
   "ltex",
   "marksman",
-  "asm_lsp"
+  "asm_lsp",
+  "cmake"
 }
 
 lsp_installer.setup()

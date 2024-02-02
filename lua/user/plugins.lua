@@ -61,7 +61,7 @@ return packer.startup(function(use)
   use { "moll/vim-bbye" }
   use { "ahmedkhalf/project.nvim" }
   use { "lewis6991/impatient.nvim" }
-  use { "lukas-reineke/indent-blankline.nvim" }
+  use { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }
   use { "goolord/alpha-nvim" }
   use "folke/which-key.nvim"
 
@@ -99,7 +99,7 @@ return packer.startup(function(use)
   use { "onsails/lspkind-nvim" }
 
   -- snippets
-  use { "L3MON4D3/LuaSnip" } --snippet engine
+  use { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" }, build = "make install_jsregexp" } --snippet engine
   use { "rafamadriz/friendly-snippets" } -- a bunch of snippets to use
 
   -- LSP

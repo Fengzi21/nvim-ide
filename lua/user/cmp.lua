@@ -9,6 +9,10 @@ if not snip_status_ok then
 end
 
 require("luasnip/loaders/from_vscode").lazy_load()
+-- load snippets from path/of/your/nvim/config/snippets
+-- require("luasnip").snippets('tex')
+require("luasnip.loaders.from_snipmate").load()
+-- require("luasnip.loaders.from_snipmate").lazy_load()
 
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
