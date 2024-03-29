@@ -23,7 +23,8 @@ local servers = {
   "ltex",
   "marksman",
   "asm_lsp",
-  "cmake"
+  "cmake",
+  "mojo"
 }
 
 lsp_installer.setup()
@@ -57,13 +58,18 @@ for _, server in pairs(servers) do
   end
 
   if server == "fortls" then
-    local pyright_opts = require "user.lsp.settings.fortls"
-    opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+    local fortls_opts = require "user.lsp.settings.fortls"
+    opts = vim.tbl_deep_extend("force", fortls_opts, opts)
   end
 
   if server == "clangd" then
-    local pyright_opts = require "user.lsp.settings.clangd"
-    opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+    local clangd_opts = require "user.lsp.settings.clangd"
+    opts = vim.tbl_deep_extend("force", clangd_opts, opts)
+  end
+
+  if server == "mojo" then
+    local mojo_opts = require "user.lsp.settings.mojo"
+    opts = vim.tbl_deep_extend("force", mojo_opts, opts)
   end
 
   lspconfig[server].setup(opts)
