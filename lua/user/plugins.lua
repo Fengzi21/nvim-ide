@@ -159,6 +159,9 @@ return packer.startup(function(use)
   -- for LaTeX
   use { 'lervag/vimtex' }
 
+  -- for Mojo
+  use { "igorgue/mojo.vim" }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
