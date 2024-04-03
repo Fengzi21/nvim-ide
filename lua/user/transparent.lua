@@ -15,6 +15,20 @@ transparent.setup({
     "BufferLineBackground",
     "BufferLineSeparator",
     "BufferLineIndicatorSelected",
+
+    "TelescopeMatching",
+    "TelescopeSelection",
+    "TelescopePromptTitle",
+    "TelescopePromptPrefix",
+    "TelescopePromptCounte",
+    "TelescopePromptNormal",
+    "TelescopePromptBorder",
+    "TelescopeResultsTitle",
+    "TelescopeResultsNormal",
+    "TelescopeResultsBorder",
+    "TelescopePreviewTitle",
+    "TelescopePreviewNormal",
+    "TelescopePreviewBorder",
   },
   exclude_groups = {}, -- table: groups you don't want to clear
 })
