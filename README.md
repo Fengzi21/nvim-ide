@@ -166,5 +166,8 @@ choco install nerdfont-hack
 conda install -c conda-forge jupytext
 ```
 
+## Transparent
+- Run `TransparentEnable`
+
 # Possible Issues
 - [Unknown function: SemshiBufWipeout](https://github.com/numirias/semshi/issues/60)
