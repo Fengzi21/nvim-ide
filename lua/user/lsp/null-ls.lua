@@ -31,7 +31,15 @@ null_ls.setup {
         "--line-length=120",
       },
     },
-    formatting.stylua,
+    formatting.stylua.with {
+      column_width = 120,
+      line_endings = "Unix",
+      indent_type = "Spaces",
+      indent_width = 4,
+      quote_style = "AutoPreferDouble",
+      call_parentheses = "Always",
+      collapse_simple_statement = "Never",
+    },
     formatting.rustfmt,
     formatting.fprettify.with {
       extra_args = {

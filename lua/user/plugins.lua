@@ -110,9 +110,21 @@ return packer.startup(function(use)
 
   -- Telescope
   use("nvim-lua/popup.nvim")
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    },
+    config = function()
+      require("telescope").load_extension("live_grep_args")
+    end
+  }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use { "nvim-telescope/telescope.nvim" }
   use { "xiyaowong/telescope-emoji.nvim" }
+  use {
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  }
 
   -- Emoji
   use { 'stevearc/dressing.nvim' } -- improve the default vim.ui interfaces

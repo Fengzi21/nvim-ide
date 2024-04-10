@@ -90,13 +90,29 @@ local mappings = {
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Find files",
+
+  -- For Telescope
+  -- live_grep requires ripgrep
+  f = {
+    name = "Telescope",
+    f = { "<cmd>Telescope find_files<cr>", "Find Files"},
+    F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+    g = { "<cmd>Telescope live_grep<cr>", "Grep"},
+    G = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Grep Args" },
+    b = { "<cmd>Telescope buffers<cr>", "Lists open buffers"},
+    h = { "<cmd>Telescope help_tags<cr>", "Lists available help tags"},
+    P = { "<cmd>Telescope projects<cr>", "Projects" },
+    s = { "<cmd>Telescope grep_string<cr>", "Grep String"},
+    E = { "<cmd>Telescope emoji<cr>", "Emoji Search" },
+    e = { "<cmd>Telescope file_browser<CR>", "File Browser" }
   },
-  ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
-  ["E"] = { "<cmd>Telescope emoji<cr>", "Emoji Search" },
+
+  -- ["f"] = {
+  --   "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+  --   "Find files",
+  -- },
+
+  F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 
   p = {
     name = "Packer",
