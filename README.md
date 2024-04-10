@@ -44,7 +44,7 @@ sudo apt-get upgrade libstdc++6
 sudo apt install xsel
 ```
 
-### Wayland support
+### Clipboard integration
 ```bash
 # Ubuntu
 sudo apt install wl-clipboard

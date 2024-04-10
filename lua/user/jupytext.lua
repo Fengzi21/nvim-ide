@@ -1,8 +1,7 @@
 -- See more @ https://www.maxwellrules.com/misc/nvim_jupyter.html
 
-
-vim.g.jupytext_fmt = 'py'
-vim.g.jupytext_style = 'percent'
+vim.g.jupytext_fmt = "py"
+vim.g.jupytext_style = "percent"
 
 -- Send cell to IronRepl and move to next cell.
 -- Depends on the text object defined in vim-textobj-hydrogen

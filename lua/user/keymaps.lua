@@ -1,9 +1,7 @@
--- Shorten function name
-local keymap = vim.keymap.set
--- Silent keymap option
-local opts = { silent = true }
+local keymap = vim.keymap.set -- Shorten function name
+local opts = { silent = true } -- Silent keymap option
 
---Remap space as leader key
+-- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
@@ -45,9 +43,9 @@ keymap("n", "<A-Up>", "<Esc>:m .-2<CR>==", opts)
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 
 -- Jupyter in Repl
-vim.cmd [[ 
+vim.cmd([[
   nmap ]x ctrih/^# %%<CR><CR>
-]]
+]])
 
 -- Insert --
 -- Press jk fast to enter
@@ -68,13 +66,13 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "<A-Down>", ":m .+1<CR>==", opts)
-keymap("v", "<A-Up>",   ":m .-2<CR>==", opts)
+keymap("v", "<A-Up>", ":m .-2<CR>==", opts)
 
 -- Quick save
 keymap("v", "<C-s>", "<cmd>w!<CR>", opts)
 
 -- Run Selected in Repl
-keymap("v", "<C-r>", "<cmd>lua require('iron.core').visual_send()<cr>", opts)
+keymap("v", "<C-r>", "<cmd>lua require('iron.core').visual_send()<CR>", opts)
 
 -- Visual Block --
 -- Move text up and down
@@ -85,7 +83,7 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<C-s>", "<cmd>w!<CR>", opts)
 
 -- Run Selected in Repl
-keymap("x", "<C-r>", "<cmd>lua require('iron.core').visual_send()<cr>", opts)
+keymap("x", "<C-r>", "<cmd>lua require('iron.core').visual_send()<CR>", opts)
 
 -- Plugins --
 
@@ -106,19 +104,19 @@ keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewis
 keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
 
 -- DAP
-keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
+keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", opts)
+keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>", opts)
+keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>", opts)
+keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<CR>", opts)
+keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>", opts)
+keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<CR>", opts)
+keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<CR>", opts)
+keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<CR>", opts)
 
 -- Terminal
 -- This not working
--- keymap("n", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<cr>", opts)
--- keymap("i", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<cr>", opts)
+-- keymap("n", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<CR>", opts)
+-- keymap("i", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<CR>", opts)
 keymap("v", "<C-i>", "<cmd>ToggleTermSendVisualLines 7<CR>", opts)
 keymap("x", "<C-i>", "<cmd>ToggleTermSendVisualSelection 7<CR>", opts)
