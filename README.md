@@ -49,6 +49,9 @@ sudo apt install xsel
 # Ubuntu
 sudo apt install wl-clipboard
 
+# macOS
+`pbcopy` should be builtin
+
 # or by cargo
 cargo install wl-clipboard-rs-tools
 ```
