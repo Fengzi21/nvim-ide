@@ -105,7 +105,12 @@ return packer.startup(function(use)
   -- LSP
   use { "neovim/nvim-lspconfig" } -- enable LSP
   use { "williamboman/nvim-lsp-installer" } -- simple to use language server installer
+  -- null-ls has beem archived and will no longer receive updates
   use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
+
+  -- none-ls is now a community fork of null-ls.nvim
+  -- use { "nvimtools/none-ls.nvim" }  -- lack of formatters
+
   use { "RRethy/vim-illuminate" }
 
   -- Telescope
