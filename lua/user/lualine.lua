@@ -193,7 +193,7 @@ ins_left({
 -- Tab Size
 ins_right({
 	function()
-		return "Tab Size: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+		return "⇥ " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 	end,
 })
 

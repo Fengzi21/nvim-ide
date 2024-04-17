@@ -91,6 +91,20 @@ local mappings = {
 	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 
+  -- DAP
+  d = {
+    name = "DAP",
+    b = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", 'Toggle breakpoint' },
+    c = { "<cmd>lua require'dap'.continue()<CR>", 'Continue' },
+    i = { "<cmd>lua require'dap'.step_into()<CR>", 'Step into' },
+    o = { "<cmd>lua require'dap'.step_over()<CR>", 'Step over' },
+    O = { "<cmd>lua require'dap'.step_out()<CR>", 'Step out' },
+    r = { "<cmd>lua require'dap'.repl.toggle()<CR>", 'REPL toggle' },
+    l = { "<cmd>lua require'dap'.run_last()<CR>", 'Run last' },
+    u = { "<cmd>lua require'dapui'.toggle()<CR>", 'UI toggle' },
+    t = { "<cmd>lua require'dap'.terminate()<CR>", 'Terminate' },
+  },
+
 	-- For Telescope
 	-- live_grep requires ripgrep
 	f = {
