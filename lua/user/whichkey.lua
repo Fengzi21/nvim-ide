@@ -204,6 +204,8 @@ local mappings = {
 		p = { "<cmd>MarkdownPreview<CR>", "Preview Markdown" },
 		s = { "<cmd>MarkdownPreviewStop<CR>", "Stop Markdown Preview" },
 		t = { "<cmd>MarkdownPreviewToggle<CR>", "Toggle Markdown Preview" },
+		f = { "<cmd>Glow %<CR>", "Glow Preview File" },
+		b = { "<cmd>Glow<CR>", "Glow Preview Current Buffer" },
 	},
 
 	r = {
