@@ -129,6 +129,7 @@ return packer.startup(function(use)
 		"nvim-telescope/telescope-file-browser.nvim",
 		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	})
+	use({ "nvim-telescope/telescope-media-files.nvim" })
 
 	-- Emoji
 	use({ "stevearc/dressing.nvim" }) -- improve the default vim.ui interfaces
