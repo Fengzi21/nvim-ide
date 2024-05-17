@@ -38,7 +38,6 @@ vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h17"                                 -- the font used in graphical neovim applications
 vim.opt.fileencodings = "utf-8,ucs-bom,gb18030,gbk,gb2312,cp936"  -- the encoding written to a file
 vim.opt.encoding = "utf-8"
-vim.opt.termencoding = "utf-8"
 vim.opt.eol = true
 vim.opt.fixeol = true
 vim.opt.fillchars.eob = " "
