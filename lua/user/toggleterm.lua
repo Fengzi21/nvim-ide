@@ -64,7 +64,7 @@ local conf = {
 		},
 	},
 	winbar = {
-		enabled = true,
+		enabled = false,
 		name_formatter = function(term)
 			return fmt("%d:%s", term.id, term:_display_name())
 		end,
