@@ -262,8 +262,8 @@ local mappings = {
 		p = { "<cmd>lua _PYTHON_TOGGLE()<CR>", "Python" },
 		i = { "<cmd>lua _IPYTHON_TOGGLE()<CR>", "IPython" },
 		f = { "<cmd>ToggleTerm direction=float<CR>", "Float" },
-		h = { "<cmd>ToggleTerm size=20 direction=horizontal<CR>", "Horizontal" },
-		v = { "<cmd>ToggleTerm size=80 direction=vertical<CR>", "Vertical" },
+		h = { "<cmd>ToggleTerm direction=horizontal<CR>", "Horizontal" },
+		v = { "<cmd>ToggleTerm direction=vertical<CR>", "Vertical" },
 		a = { "<cmd>ToggleTermToggleAll<CR>", "Toggle all terminal" },
 		s = {
 			name = "Send/Set",

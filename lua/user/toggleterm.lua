@@ -53,6 +53,18 @@ local conf = {
 		FloatBorder = {
 			link = "Normal",
 		},
+		SignColumn = {
+			link = "Normal",
+		},
+		SignColumnNC = {
+			link = "Normal",
+		},
+		WinBar = {
+			link = "Normal",
+		},
+		WinBarNC = {
+			link = "Normal",
+		},
 	},
 	-- This field is only relevant if direction is set to 'float'
 	float_opts = {

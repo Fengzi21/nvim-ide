@@ -132,7 +132,7 @@ ins_left({
 
 -- filename component
 ins_left({
-	"filename",
+	"filename", -- TODO custom this for toggleterm
 	cond = conditions.buffer_not_empty,
 	color = { fg = colors.magenta, gui = "bold" },
 	padding = { left = 0, right = 1 },
