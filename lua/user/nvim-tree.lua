@@ -6,7 +6,9 @@ end
 nvim_tree.setup({
 	update_focused_file = {
 		enable = true,
-		update_cwd = true,
+		update_root = {
+			enable = true,
+		},
 	},
 	renderer = {
 		root_folder_modifier = ":t",
@@ -47,7 +49,7 @@ nvim_tree.setup({
 		},
 	},
 	view = {
-		width = 30,
+		width = 40,
 		-- height = 30,
 		side = "left",
 	},
