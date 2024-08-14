@@ -278,6 +278,14 @@ local mappings = {
 		name = "Toggle",
 		l = { "<cmd>set invrelativenumber<CR>", "Toggle relative number" },
 	},
+
+	-- ydict
+	y = {
+		name = "ydict",
+		c = { "<cmd>Ydc<CR>", "Query words from cursor." },
+		v = { "<cmd>Ydv<CR>", "Query words from selected." },
+		d = { "<cmd>Yde<CR>", "Query words from input." },
+	},
 }
 
 which_key.setup(setup)

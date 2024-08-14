@@ -63,7 +63,7 @@ return packer.startup(function(use)
 	use({ "lewis6991/impatient.nvim" })
 	use({ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} })
 	use({ "goolord/alpha-nvim" })
-	use({ "folke/which-key.nvim", tag= "v2.1.0"})
+	use({ "folke/which-key.nvim", tag = "v2.1.0" })
 
 	-- colorcolumn
 	use({ "m4xshen/smartcolumn.nvim" })
@@ -194,6 +194,8 @@ return packer.startup(function(use)
 			require("codeium").setup({})
 		end,
 	})
+
+	use({ "TimothyYe/vim-ydict" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
