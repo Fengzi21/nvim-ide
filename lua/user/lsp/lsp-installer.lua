@@ -72,5 +72,10 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", mojo_opts, opts)
   end
 
+  if server == "ltex" then
+    local ltex_opts = require "user.lsp.settings.ltex"
+    opts = vim.tbl_deep_extend("force", ltex_opts, opts)
+  end
+
   lspconfig[server].setup(opts)
 end
