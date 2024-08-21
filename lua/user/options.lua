@@ -1,3 +1,4 @@
+-- :help options
 vim.opt.backup = false                                  -- creates a backup file
 vim.opt.writebackup = false                             -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 -- ref: https://stackoverflow.com/questions/30691466/what-is-difference-between-vims-clipboard-unnamed-and-unnamedplus-settings
@@ -44,4 +45,5 @@ vim.opt.fillchars.eob = " "
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
+vim.opt.formatoptions:remove({ "c", "r", "o" })
 -- vim.opt.shellcmdflag = "-ic"
