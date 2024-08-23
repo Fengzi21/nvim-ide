@@ -11,6 +11,7 @@ local diagnostics = null_ls.builtins.diagnostics
 local completion = null_ls.builtins.completion
 
 -- https://github.com/prettier-solidity/prettier-plugin-solidity
+---@diagnostic disable-next-line: redundant-parameter
 null_ls.setup {
   debug = false,
   sources = {

@@ -1,112 +1,133 @@
-local keymap = vim.keymap.set -- Shorten function name
+-- Modes
+--   normal_mode = 'n',
+--   insert_mode = 'i',
+--   visual_mode = 'v',
+--   visual_block_mode = 'x',
+--   term_mode = 't',
+--   command_mode = 'c',
+
+
+local keymap = vim.keymap.set  -- Shorten function name
 local opts = { silent = true } -- Silent keymap option
 
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
+vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+local rtn = {
+  n = '',
+  v = "<C-\\><C-N>",
+  x = "<C-\\><C-N>",
+  i = "<C-\\><C-N>",
+  c = "<C-\\><C-N>",
+  t = "<C-\\><C-N>",
+}
 
--- Normal --
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- Return to normal mode --
+-- <C-\><C-N> works in all modes and performs better
+-- ref: https://github.com/neovim/neovim/issues/7648
+for _, m in pairs({ 'i', 'v', 'x', 't', 'c' }) do
+  keymap(m, "<Esc>", rtn[m], opts)
+  -- Press jk quickly
+  if m == 'i' or m == 'c' or m == 't' then
+    keymap(m, "jk", rtn[m], opts)
+  end
+end
 
--- netrw
--- keymap("n", "<leader>e", ":Lex 30<cr>", opts) -- use NvimTree instead
+-- Better window navigation --
+for _, m in pairs({ 'n', 'v', 'x', 'i', 't' }) do
+  -- Navigate --
+  keymap(m, "<C-h>", rtn[m] .. "<C-w>h", opts)
+  keymap(m, "<C-j>", rtn[m] .. "<C-w>j", opts)
+  keymap(m, "<C-k>", rtn[m] .. "<C-w>k", opts)
+  keymap(m, "<C-l>", rtn[m] .. "<C-w>l", opts)
+  -- Close --
+  if m ~= 'i' then
+    keymap(m, "<C-q>", rtn[m] .. ":quit<CR>", opts)
+  end
+end
 
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+-- Resize --
+for _, m in pairs({ 'n', 'v', 'x', 'i', 'c', 't' }) do
+  -- Resize with arrows --
+  keymap(m, "<C-Up>", rtn[m] .. ":resize +2<CR>", opts)
+  keymap(m, "<C-Down>", rtn[m] .. ":resize -2<CR>", opts)
+  keymap(m, "<C-Left>", rtn[m] .. ":vertical resize -2<CR>", opts)
+  keymap(m, "<C-Right>", rtn[m] .. ":vertical resize +2<CR>", opts)
+  -- Toggle fullscreen --
+  keymap(m, "<C-f>", rtn[m] .. ":tab split<CR>", opts)
+  keymap(m, "<C-b>", rtn[m] .. ":tab close<CR>", opts)
+end
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- netrw --
+-- use NvimTree instead
+-- keymap('n', "<leader>e", ":Lex 30<CR>", opts)
 
--- Quick save
-keymap("n", "<C-s>", "<cmd>w!<CR>", opts)
+-- Buffers --
+for _, m in pairs({ 'n', 'v', 'x' }) do
+  -- Navigate --
+  keymap(m, "<S-l>", rtn[m] .. ":bnext<CR>", opts)
+  keymap(m, "<S-h>", rtn[m] .. ":bprevious<CR>", opts)
+  -- Close --
+  keymap(m, "<S-q>", rtn[m] .. ":Bdelete!<CR>", opts)
+end
 
--- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==", opts)
-keymap("n", "<A-Down>", "<Esc>:m .+1<CR>==", opts)
-keymap("n", "<A-Up>", "<Esc>:m .-2<CR>==", opts)
+-- Save and Move lines --
+for _, m in pairs({ 'n', 'v', 'x', 'i' }) do
+  -- Quick save --
+  keymap(m, "<C-s>", rtn[m] .. ":w!<CR>", opts)
 
--- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+  -- Move lines up and down --
+  local up_cmd, down_cmd
+  if m == 'n' or m == 'i' then
+    local _rtn = m == 'i' and "<C-\\><C-N>" or ''
+    up_cmd = _rtn .. ":move .-2<CR>=="
+    down_cmd = _rtn .. ":move .+1<CR>=="
+  else
+    up_cmd = ":move '<-2<CR>gv-gv"
+    down_cmd = ":move '>+1<CR>gv-gv"
+  end
+  keymap(m, "<A-j>", down_cmd, opts)
+  keymap(m, "<A-k>", up_cmd, opts)
+  keymap(m, "<A-Down>", down_cmd, opts)
+  keymap(m, "<A-Up>", up_cmd, opts)
+end
 
--- Jupyter in Repl
-vim.cmd([[
-  nmap ]x ctrih/^# %%<CR><CR>
-]])
+-- Better paste --
+keymap('v', "p", '"_dP', opts)
+keymap('x', "p", '"_dP', opts)
 
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+-- Stay in indent mode --
+keymap('v', "<", "<gv", opts)
+keymap('v', ">", ">gv", opts)
 
--- Quick save
-keymap("i", "<C-s>", "<cmd>w!<CR>", opts)
+-- Comment --
+-- ref: https://github.com/numToStr/Comment.nvim
+local toggle_linewise_current = function()
+  return
+      vim.v.count == 0
+      and "<Plug>(comment_toggle_linewise_current)"
+      or "<Plug>(comment_toggle_linewise_count)"
+end
+keymap('i', "<C-/>", rtn.i .. toggle_linewise_current(), opts)
+keymap('n', "<C-/>", toggle_linewise_current(), opts)
+keymap('x', "<C-/>", "<Plug>(comment_toggle_linewise_visual)", opts)
+keymap('v', "<C-/>", "<Plug>(comment_toggle_linewise_visual)", opts)
 
--- Visual --
--- Better paste
-keymap("v", "p", '"_dP', opts)
+-- Jupyter in Repl --
+vim.cmd([[ nmap ]x ctrih/^# %%<CR><CR> ]])
 
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+-- Run in Repl --
+-- ref: https://github.com/Vigemus/iron.nvim
+keymap('i', "<C-e>", rtn.i .. ":lua require('iron.core').send_line()<CR>", opts)
+keymap('n', "<C-e>", ":lua require('iron.core').send_line()<CR>", opts)
+keymap('v', "<C-e>", ":lua require('iron.core').visual_send()<CR>", opts)
+keymap('x', "<C-e>", ":lua require('iron.core').visual_send()<CR>", opts)
 
--- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "<A-Down>", ":m .+1<CR>==", opts)
-keymap("v", "<A-Up>", ":m .-2<CR>==", opts)
-
--- Quick save
-keymap("v", "<C-s>", "<cmd>w!<CR>", opts)
-
--- Run Selected in Repl
-keymap("v", "<C-r>", "<cmd>lua require('iron.core').visual_send()<CR>", opts)
-
--- Visual Block --
--- Move text up and down
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-
--- Quick save
-keymap("x", "<C-s>", "<cmd>w!<CR>", opts)
-
--- Run Selected in Repl
-keymap("x", "<C-r>", "<cmd>lua require('iron.core').visual_send()<CR>", opts)
-
--- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
-
--- DAP
--- keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
--- keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", opts)
--- keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>", opts)
--- keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>", opts)
--- keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<CR>", opts)
--- keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<CR>", opts)
--- keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<CR>", opts)
--- keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<CR>", opts)
--- keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<CR>", opts)
-
--- Terminal
--- This not working
--- keymap("n", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<CR>", opts)
--- keymap("i", "<C-i>", "<cmd>ToggleTermSendCurrentLine 7<CR>", opts)
-keymap("v", "<C-i>", "<cmd>ToggleTermSendVisualLines 7<CR>", opts)
-keymap("x", "<C-i>", "<cmd>ToggleTermSendVisualSelection 7<CR>", opts)
+-- Run in IPython --
+-- ref: https://github.com/akinsho/toggleterm.nvim
+keymap('i', "<C-i>", rtn.i .. ":ToggleTermSendCurrentLine 7<CR>", opts)
+keymap('n', "<C-i>", ":ToggleTermSendCurrentLine 7<CR>", opts)
+keymap('x', "<C-i>", ":ToggleTermSendVisualLines 7<CR>", opts)
+keymap('v', "<C-i>", ":ToggleTermSendVisualLines 7<CR>", opts)
