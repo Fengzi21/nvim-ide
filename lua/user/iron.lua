@@ -16,6 +16,11 @@ iron.setup({
         command = { "ipython" },
         format = require("iron.fts.common").bracketed_paste,
       },
+      -- python = require("iron.fts.python").ptipython,
+      -- lua = {
+      --   command = { "croissant" },
+      --   format = require("iron.fts.common").bracketed_paste,
+      -- },
     },
     -- How the repl window will be displayed
     -- See below for more information

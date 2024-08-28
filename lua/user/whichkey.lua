@@ -273,9 +273,11 @@ local mappings = {
     },
   },
 
-  T = {
-    name = "Toggle",
-    l = { ":set invrelativenumber<CR>", "Toggle relative number" },
+  w = {
+    name = "Window",
+    s = { ":sp<CR>", "Split Horizontally" },
+    v = { ":vs<CR>", "Split Vertically" },
+    l = { ":windo set invrelativenumber<CR>", "Toggle relative number" },
   },
 
   -- ydict

@@ -169,13 +169,14 @@ return packer.startup(function(use)
   use({ "ravenxrz/DAPInstall.nvim" })
 
   -- Interactive Repl
-  use({ "hkupty/iron.nvim" })
+  -- https://github.com/Vigemus/iron.nvim
+  use({ "Vigemus/iron.nvim" })
 
   -- Jupyter support
   use({ "kana/vim-textobj-user" })
   use({ "kana/vim-textobj-line" })
-  use({ "GCBallesteros/vim-textobj-hydrogen" }) -- form from 'goerz/jupytext.vim'
-  use({ "GCBallesteros/jupytext.vim" })
+  use({ "GCBallesteros/vim-textobj-hydrogen" })
+  use({ "GCBallesteros/jupytext.vim" }) -- form from 'goerz/jupytext.vim'
 
   -- for LaTeX
   use({ "lervag/vimtex" })

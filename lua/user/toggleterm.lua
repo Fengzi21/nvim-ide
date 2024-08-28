@@ -21,13 +21,21 @@ if package.config:sub(1, 1) == "\\" then
   end
 end
 
+-- Function to be executed when a terminal is created
+local function on_term_create(term)
+  vim.api.nvim_chan_send(
+    term.job_id,
+    'eval "$(oh-my-posh init zsh --config ~/.poshthemes/yfn.omp.json)" && clear\n'
+  )
+end
+
 local conf = {
   -- size can be a number or function which is passed the current terminal
   size = function(term)
     if term.direction == "vertical" then
       return 80
     elseif term.direction == "horizontal" then
-      return 20
+      return 15
     end
   end,
   open_mapping = [[<c-\>]],
@@ -42,6 +50,7 @@ local conf = {
   direction = "float",      -- 'float' | 'horizontal' | 'vertical'
   close_on_exit = true,
   shell = vim.o.shell,
+  on_create = function(term) on_term_create(term) end,
   auto_scroll = true,
   highlights = {
     Normal = {
