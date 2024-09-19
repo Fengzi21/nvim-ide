@@ -65,10 +65,10 @@ return packer.startup(function(use)
   -- colorcolumn --
   use({ "m4xshen/smartcolumn.nvim" })
 
-  -- statusline -=
+  -- statusline --
   use({ "nvim-lualine/lualine.nvim" })
 
-  -- bufferline  -=
+  -- bufferline  --
   use({ "akinsho/bufferline.nvim", requires = "nvim-tree/nvim-web-devicons" })
 
   -- Colorschemes --
@@ -96,21 +96,25 @@ return packer.startup(function(use)
   use({ "onsails/lspkind-nvim" })
 
   -- snippets --
-  use({ "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" }, build = "make install_jsregexp" }) --snippet engine
-  use({ "rafamadriz/friendly-snippets" })                                                                         -- a bunch of snippets to use
+  use({
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    build = "make install_jsregexp"
+  })                                      --snippet engine
+  use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
 
-  -- LSP -=
+  -- LSP --
   use({ "neovim/nvim-lspconfig" })           -- enable LSP
   use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
   -- null-ls has beem archived and will no longer receive updates
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 
-  -- none-ls is now a community fork of null-ls.nvim -=
+  -- none-ls is now a community fork of null-ls.nvim
   -- use { "nvimtools/none-ls.nvim" }  -- lack of formatters
 
   use({ "RRethy/vim-illuminate" })
 
-  -- Telescope -=
+  -- Telescope --
   use("nvim-lua/popup.nvim")
   use({
     "nvim-telescope/telescope.nvim",
@@ -160,7 +164,7 @@ return packer.startup(function(use)
   -- Git --
   use({ "lewis6991/gitsigns.nvim" })
 
-  -- DAP -=
+  -- DAP --
   use({ "mfussenegger/nvim-dap" })
   use({ "rcarriga/nvim-dap-ui" })
   use({ "ravenxrz/DAPInstall.nvim" })

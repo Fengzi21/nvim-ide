@@ -33,13 +33,15 @@ null_ls.setup {
       },
     },
     formatting.stylua.with {
-      column_width = 120,
-      line_endings = "Unix",
-      indent_type = "Spaces",
-      indent_width = 4,
-      quote_style = "AutoPreferDouble",
-      call_parentheses = "Always",
-      collapse_simple_statement = "Never",
+      extra_args = {
+        "--column-width=120",
+        "--line-endings=Unix",
+        "--indent-type=Spaces",
+        "--indent-width=2",
+        "--quote-style=AutoPreferDouble",
+        "--call-parentheses=Always",
+        "--collapse-simple-statement=Never",
+      },
     },
     formatting.rustfmt,
     formatting.fprettify.with {
