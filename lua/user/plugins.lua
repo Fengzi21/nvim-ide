@@ -110,7 +110,7 @@ return packer.startup(function(use)
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 
   -- none-ls is now a community fork of null-ls.nvim
-  -- use { "nvimtools/none-ls.nvim" }  -- lack of formatters
+  -- use { "nvimtools/none-ls.nvim" }  -- lack of formatters: blue, rustfmt, flake8
 
   use({ "RRethy/vim-illuminate" })
 
