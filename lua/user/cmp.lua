@@ -8,6 +8,9 @@ if not snip_status_ok then
   return
 end
 
+---@diagnostic disable-next-line: undefined-field
+local cmpwindow = cmp.config.window
+
 require("luasnip/loaders/from_vscode").lazy_load()
 -- load snippets from path/of/your/nvim/config/snippets
 -- require("luasnip").snippets('tex')
@@ -125,8 +128,8 @@ cmp.setup({
     select = false,
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    completion = cmpwindow.bordered(),
+    documentation = cmpwindow.bordered(),
   },
   experimental = {
     ghost_text = true,

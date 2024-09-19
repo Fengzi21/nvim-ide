@@ -179,6 +179,8 @@ ins_left({
       return msg
     end
     for _, client in ipairs(clients) do
+      -- TODO: check this
+      ---@diagnostic disable-next-line: undefined-field
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
         return client.name
@@ -223,7 +225,7 @@ ins_right({
 -- git diff status
 ins_right({
   "diff",
-  symbols = { added = " ", modified = "柳 ", removed = " " },
+  symbols = { added = " ", modified = " ", removed = " " },
   diff_color = {
     added = { fg = colors.green },
     modified = { fg = colors.orange },

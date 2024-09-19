@@ -115,9 +115,6 @@ keymap('n', "<C-/>", toggle_linewise_current(), opts)
 keymap('x', "<C-/>", "<Plug>(comment_toggle_linewise_visual)", opts)
 keymap('v', "<C-/>", "<Plug>(comment_toggle_linewise_visual)", opts)
 
--- Jupyter in Repl --
-vim.cmd([[ nmap ]x ctrih/^# %%<CR><CR> ]])
-
 -- Run in Repl --
 -- ref: https://github.com/Vigemus/iron.nvim
 keymap('i', "<C-e>", rtn.i .. ":lua require('iron.core').send_line()<CR>", opts)
@@ -131,3 +128,7 @@ keymap('i', "<C-i>", rtn.i .. ":ToggleTermSendCurrentLine 7<CR>", opts)
 keymap('n', "<C-i>", ":ToggleTermSendCurrentLine 7<CR>", opts)
 keymap('x', "<C-i>", ":ToggleTermSendVisualLines 7<CR>", opts)
 keymap('v', "<C-i>", ":ToggleTermSendVisualLines 7<CR>", opts)
+
+-- Jupyter in Repl --
+-- Run the cell started by `# %%` with `]x`
+vim.cmd([[nmap ]x ctrih/^# %%<CR><CR>]])

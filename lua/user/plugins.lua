@@ -1,17 +1,15 @@
--- see more at
--- https://github.com/tcmmichaelb139/.dotfiles
--- https://github.com/LunarVim/nvim-basic-ide
+-- See more details at
+-- - https://github.com/tcmmichaelb139/.dotfiles
+-- - https://github.com/LunarVim/nvim-basic-ide
 
 local fn = vim.fn
 
--- Automatically install packer
+-- Automatically install packer --
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system({
-    "git",
-    "clone",
-    "--depth",
-    "1",
+    "git", "clone", "--depth", "1",
     -- "https://github.com/wbthomason/packer.nvim",
     "git@github.com:wbthomason/packer.nvim.git",
     install_path,
@@ -20,7 +18,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd([[packadd packer.nvim]])
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- Autocommand that reloads neovim whenever you save the plugins.lua file --
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -28,13 +26,13 @@ vim.cmd([[
   augroup end
 ]])
 
--- Use a protected call so we don't error out on first use
+-- Use a protected call so we don't error out on first use --
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
   return
 end
 
--- Have packer use a popup window
+-- Have packer use a popup window --
 packer.init({
   display = {
     open_fn = function()
@@ -48,48 +46,47 @@ packer.init({
   },
 })
 
--- Install your plugins here
+-- Install your plugins here --
 return packer.startup(function(use)
-  -- My plugins here
+  -- My plugins here --
   use({ "wbthomason/packer.nvim" }) -- Have packer manage itself
   use({ "nvim-lua/plenary.nvim" })  -- Useful lua functions used by lots of plugins
   use({ "numToStr/Comment.nvim" })
   use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-  use({ "kyazdani42/nvim-web-devicons" })
+  use({ "nvim-tree/nvim-web-devicons" })
+  use({ "nvim-tree/nvim-tree.lua" })
   use({ "echasnovski/mini.nvim", version = "*" })
-  use({ "kyazdani42/nvim-tree.lua" })
   use({ "moll/vim-bbye" })
   use({ "ahmedkhalf/project.nvim" })
-  use({ "lewis6991/impatient.nvim" })
   use({ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} })
   use({ "goolord/alpha-nvim" })
   use({ "folke/which-key.nvim", tag = "v2.1.0" })
 
-  -- colorcolumn
+  -- colorcolumn --
   use({ "m4xshen/smartcolumn.nvim" })
 
-  -- statusline
+  -- statusline -=
   use({ "nvim-lualine/lualine.nvim" })
 
-  -- bufferline
-  use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+  -- bufferline  -=
+  use({ "akinsho/bufferline.nvim", requires = "nvim-tree/nvim-web-devicons" })
 
-  -- Colorschemes
+  -- Colorschemes --
   use({ "folke/tokyonight.nvim" })
   use({ "numirias/semshi", run = ":UpdateRemotePlugins" })
   use({ "tanvirtin/monokai.nvim" })
   use({ "vim-python/python-syntax" })
 
-  -- colorizer
+  -- colorizer --
   use({ "norcalli/nvim-colorizer.lua" })
 
-  -- Autopairs
+  -- Autopairs --
   use({ "windwp/nvim-autopairs" }) -- integrates with both cmp and treesitter
 
-  -- Transparent
+  -- Transparent --
   use({ "xiyaowong/nvim-transparent" })
 
-  -- cmp plugins for completion
+  -- cmp plugins for completion --
   use({ "hrsh7th/nvim-cmp" })         -- The completion plugin
   use({ "hrsh7th/cmp-buffer" })       -- buffer completions
   use({ "hrsh7th/cmp-path" })         -- path completions
@@ -98,22 +95,22 @@ return packer.startup(function(use)
   use({ "hrsh7th/cmp-nvim-lua" })
   use({ "onsails/lspkind-nvim" })
 
-  -- snippets
+  -- snippets --
   use({ "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" }, build = "make install_jsregexp" }) --snippet engine
   use({ "rafamadriz/friendly-snippets" })                                                                         -- a bunch of snippets to use
 
-  -- LSP
+  -- LSP -=
   use({ "neovim/nvim-lspconfig" })           -- enable LSP
   use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
   -- null-ls has beem archived and will no longer receive updates
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 
-  -- none-ls is now a community fork of null-ls.nvim
+  -- none-ls is now a community fork of null-ls.nvim -=
   -- use { "nvimtools/none-ls.nvim" }  -- lack of formatters
 
   use({ "RRethy/vim-illuminate" })
 
-  -- Telescope
+  -- Telescope -=
   use("nvim-lua/popup.nvim")
   use({
     "nvim-telescope/telescope.nvim",
@@ -132,7 +129,7 @@ return packer.startup(function(use)
   })
   use({ "nvim-telescope/telescope-media-files.nvim" })
 
-  -- Emoji
+  -- Emoji --
   use({ "stevearc/dressing.nvim" }) -- improve the default vim.ui interfaces
   use({
     "ziontee113/icon-picker.nvim",
@@ -145,7 +142,7 @@ return packer.startup(function(use)
 
   use({ "hrsh7th/cmp-emoji" }) -- Markdown emoji
 
-  -- Markdown
+  -- Markdown --
   use({
     "iamcco/markdown-preview.nvim",
     run = function()
@@ -154,39 +151,40 @@ return packer.startup(function(use)
   })
   use({ "ellisonleao/glow.nvim" })
 
-  -- Treesitter
+  -- Treesitter --
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
-  -- Toggle terminal
+  -- Toggle terminal --
   use({ "akinsho/toggleterm.nvim" })
 
-  -- Git
+  -- Git --
   use({ "lewis6991/gitsigns.nvim" })
 
-  -- DAP
+  -- DAP -=
   use({ "mfussenegger/nvim-dap" })
   use({ "rcarriga/nvim-dap-ui" })
   use({ "ravenxrz/DAPInstall.nvim" })
 
-  -- Interactive Repl
+  -- Interactive Repl --
   -- https://github.com/Vigemus/iron.nvim
   use({ "Vigemus/iron.nvim" })
 
-  -- Jupyter support
+  -- Jupyter support --
   use({ "kana/vim-textobj-user" })
   use({ "kana/vim-textobj-line" })
   use({ "GCBallesteros/vim-textobj-hydrogen" })
-  use({ "GCBallesteros/jupytext.vim" }) -- form from 'goerz/jupytext.vim'
+  use({ "GCBallesteros/jupytext.nvim" }) -- form from 'goerz/jupytext.vim'
 
-  -- for LaTeX
+  -- LaTeX --
   use({ "lervag/vimtex" })
 
-  -- for Mojo
+  -- Mojo --
   use({ "igorgue/mojo.vim" })
 
+  -- YDict --
   use({ "TimothyYe/vim-ydict" })
 
-  -- Automatically set up your configuration after cloning packer.nvim
+  -- Automatically set up your configuration after cloning packer.nvim --
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
