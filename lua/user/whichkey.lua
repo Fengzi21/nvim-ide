@@ -80,14 +80,18 @@ local opts = {
 
 local mappings = {
   ["a"] = { ":Alpha<CR>", "Alpha" },
-  ["b"] = {
-    ":lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<CR>",
-    "Buffers",
-  },
   ["e"] = { ":NvimTreeToggle<CR>", "Explorer" },
   ["q"] = { ":q!<CR>", "Quit" },
-  ["c"] = { ":Bdelete!<CR>", "Close Buffer" },
   ["h"] = { ":nohlsearch<CR>", "No Highlight" },
+
+  b = {
+    "Buffer",
+    b = {
+      ":lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<CR>",
+      "Buffers",
+    },
+    c = { ":Bdelete!<CR>", "Close Buffer" },
+  },
 
   -- DAP
   d = {
