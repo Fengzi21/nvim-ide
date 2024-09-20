@@ -132,8 +132,3 @@ keymap('v', "<C-i>", ":ToggleTermSendVisualLines 7<CR>", opts)
 -- Jupyter in Repl --
 -- Run the cell started by `# %%` with `]x`
 vim.cmd([[nmap ]x ctrih/^# %%<CR><CR>]])
-
--- -- Clipboard --
-keymap('n', '<leader>c', require('osc52').copy_operator, { expr = true })
-keymap('n', '<leader>cc', '<leader>c_', { remap = true })
-keymap('v', '<leader>c', require('osc52').copy_visual)
