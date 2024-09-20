@@ -85,7 +85,6 @@ local mappings = {
     "Buffers",
   },
   ["e"] = { ":NvimTreeToggle<CR>", "Explorer" },
-  ["w"] = { ":w!<CR>", "Save" },
   ["q"] = { ":q!<CR>", "Quit" },
   ["c"] = { ":Bdelete!<CR>", "Close Buffer" },
   ["h"] = { ":nohlsearch<CR>", "No Highlight" },

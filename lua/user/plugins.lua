@@ -114,6 +114,14 @@ return packer.startup(function(use)
 
   use({ "RRethy/vim-illuminate" })
 
+  use({
+    'nvimdev/lspsaga.nvim',
+    after = 'nvim-lspconfig',
+    config = function()
+      require('lspsaga').setup({})
+    end,
+  })
+
   -- Telescope --
   use("nvim-lua/popup.nvim")
   use({
