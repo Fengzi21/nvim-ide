@@ -9,7 +9,10 @@ local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system({
-    "git", "clone", "--depth", "1",
+    "git",
+    "clone",
+    "--depth",
+    "1",
     -- "https://github.com/wbthomason/packer.nvim",
     "git@github.com:wbthomason/packer.nvim.git",
     install_path,
@@ -99,8 +102,8 @@ return packer.startup(function(use)
   use({
     "L3MON4D3/LuaSnip",
     dependencies = { "rafamadriz/friendly-snippets" },
-    build = "make install_jsregexp"
-  })                                      --snippet engine
+    build = "make install_jsregexp",
+  })                                      -- snippet engine
   use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
 
   -- LSP --
@@ -115,10 +118,10 @@ return packer.startup(function(use)
   use({ "RRethy/vim-illuminate" })
 
   use({
-    'nvimdev/lspsaga.nvim',
-    after = 'nvim-lspconfig',
+    "nvimdev/lspsaga.nvim",
+    after = "nvim-lspconfig",
     config = function()
-      require('lspsaga').setup({})
+      require("lspsaga").setup({})
     end,
   })
 
@@ -197,7 +200,7 @@ return packer.startup(function(use)
   use({ "TimothyYe/vim-ydict" })
 
   -- Clipboard --
-  use({ 'ojroques/nvim-osc52' })
+  use({ "ojroques/nvim-osc52" })
 
   -- Automatically set up your configuration after cloning packer.nvim --
   -- Put this at the end after all plugins
