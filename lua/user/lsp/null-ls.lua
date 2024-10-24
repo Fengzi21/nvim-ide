@@ -12,27 +12,27 @@ local completion = null_ls.builtins.completion
 
 -- https://github.com/prettier-solidity/prettier-plugin-solidity
 ---@diagnostic disable-next-line: redundant-parameter
-null_ls.setup {
+null_ls.setup({
   debug = false,
   sources = {
     completion.spell,
-    formatting.prettier.with {
+    formatting.prettier.with({
       extra_filetypes = { "toml" },
-      extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-    },
+      extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote", "--print-widt=100" },
+    }),
     -- formatting.black.with {
     --   extra_args = {
     --     "--fast",
     --     "--line-length=120",
     --   },
     -- },
-    formatting.blue.with {
+    formatting.blue.with({
       extra_args = {
         "--fast",
         "--line-length=120",
       },
-    },
-    formatting.stylua.with {
+    }),
+    formatting.stylua.with({
       extra_args = {
         "--column-width=120",
         "--line-endings=Unix",
@@ -42,15 +42,20 @@ null_ls.setup {
         "--call-parentheses=Always",
         "--collapse-simple-statement=Never",
       },
-    },
+    }),
     formatting.rustfmt,
-    formatting.fprettify.with {
+    formatting.fprettify.with({
       extra_args = {
         "--indent=2",
         "--whitespace=3",
         "--enable-decl",
+        "--line-length=120",
       },
-    },
+    }),
+    formatting.clang_format.with({
+      filetypes = { "c", "cpp", "objc", "objcpp" }, -- Specify file types
+      extra_args = { "--length=100" },
+    }),
     diagnostics.flake8,
   },
-}
+})

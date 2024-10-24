@@ -12,7 +12,7 @@ return {
     -- "--clang-tidy",
     "--offset-encoding=utf-16",
     -- "--clang-tidy-checks=-*,llvm-*,clang-analyzer-*,modernize-*,-modernize-use-trailing-return-type",
-    -- "--fallback-style=Google",
+    '--fallback-style="{BasedOnStyle: llvm, ColumnLimit: 100}"',
     -- "--header-insertion=never",
     -- "--query-driver=<list-of-white-listed-complers>"
   },
