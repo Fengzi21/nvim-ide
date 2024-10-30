@@ -33,9 +33,9 @@ local conf = {
   -- size can be a number or function which is passed the current terminal
   size = function(term)
     if term.direction == "vertical" then
-      return 80
+      return 70
     elseif term.direction == "horizontal" then
-      return 15
+      return 10
     end
   end,
   open_mapping = [[<c-\>]],
