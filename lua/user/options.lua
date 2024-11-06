@@ -47,3 +47,4 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 -- vim.opt.shellcmdflag = "-ic"
+vim.opt.rtp:append("/opt/homebrew/opt/fzf")
