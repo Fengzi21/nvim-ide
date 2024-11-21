@@ -91,6 +91,7 @@ local mappings = {
       "Buffers",
     },
     c = { ":Bdelete!<CR>", "Close Buffer" },
+    C = { ":%bd <bar> e# <bar> bd#<CR>", "Close All Buffer" },
   },
 
   -- DAP
