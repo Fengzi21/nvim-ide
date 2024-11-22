@@ -56,6 +56,7 @@ null_ls.setup({
       filetypes = { "c", "cpp", "objc", "objcpp" }, -- Specify file types
       extra_args = { "--length=100" },
     }),
+    formatting.asmfmt,
     diagnostics.flake8,
   },
 })
