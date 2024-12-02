@@ -50,7 +50,18 @@ local conf = {
   direction = "float",      -- 'float' | 'horizontal' | 'vertical'
   close_on_exit = true,
   shell = vim.o.shell,
-  on_create = function(term) on_term_create(term) end,
+  on_create = function(term)
+    local ispy = string.find(string.lower(term.name), "python") ~= nil
+    local ishs = string.find(string.lower(term.name), "ghci") ~= nil
+    local islg = string.find(string.lower(term.name), "lazygit") ~= nil
+    local isnode = string.find(string.lower(term.name), "node") ~= nil
+    local ishtop = string.find(string.lower(term.name), "htop") ~= nil
+    local isncdu = string.find(string.lower(term.name), "ncdu") ~= nil
+    if (ispy or ishs or islg or isnode or ishtop or isncdu ) then
+      return
+    end
+    on_term_create(term)
+  end,
   auto_scroll = true,
   highlights = {
     Normal = {
@@ -133,4 +144,18 @@ local ipython = Terminal:new({
 })
 function _IPYTHON_TOGGLE()
   ipython:toggle()
+end
+
+local haskell = Terminal:new({
+  cmd = "ghci",
+  hidden = true,
+  id = 9,
+  count = 9,
+  direction = "vertical",
+  auto_scroll = true,
+  name = "Haskell",
+  display_name = "Haskell",
+})
+function _HASKELL_TOGGLE()
+  haskell:toggle()
 end

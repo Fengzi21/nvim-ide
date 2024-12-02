@@ -82,7 +82,7 @@ local mappings = {
   ["a"] = { ":Alpha<CR>", "Alpha" },
   ["e"] = { ":NvimTreeToggle<CR>", "Explorer" },
   ["q"] = { ":q!<CR>", "Quit" },
-  ["h"] = { ":nohlsearch<CR>", "No Highlight" },
+  ["H"] = { ":nohlsearch<CR>", "No Highlight" },
 
   b = {
     "Buffer",
@@ -268,6 +268,7 @@ local mappings = {
     t = { ":lua _HTOP_TOGGLE()<CR>", "Htop" },
     p = { ":lua _PYTHON_TOGGLE()<CR>", "Python" },
     i = { ":lua _IPYTHON_TOGGLE()<CR>", "IPython" },
+    H = { ":lua _HASKELL_TOGGLE()<CR>", "Haskell" },
     f = { ":ToggleTerm direction=float<CR>", "Float" },
     h = { ":ToggleTerm direction=horizontal<CR>", "Horizontal" },
     v = { ":ToggleTerm direction=vertical<CR>", "Vertical" },
@@ -279,6 +280,14 @@ local mappings = {
       v = { ":ToggleTermSendVisualLines 7<CR>", "Send visual lines to ipython" },
       b = { ":ToggleTermSendVisualSelection 7<CR>", "Send visually selected block to ipython" },
     },
+  },
+
+  h = {
+    name = "Haskell",
+      n = { ":ToggleTermSetName<CR>", "Set terminal name" },
+      l = { ":ToggleTermSendCurrentLine 9<CR>", "Send current line to ipython" },
+      v = { ":ToggleTermSendVisualLines 9<CR>", "Send visual lines to ipython" },
+      b = { ":ToggleTermSendVisualSelection 9<CR>", "Send visually selected block to ipython" },
   },
 
   w = {
