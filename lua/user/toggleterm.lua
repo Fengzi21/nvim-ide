@@ -23,6 +23,15 @@ end
 
 -- Function to be executed when a terminal is created
 local function on_term_create(term)
+  local ispy = string.find(string.lower(term.name), "python") ~= nil
+  local ishs = string.find(string.lower(term.name), "ghci") ~= nil
+  local islg = string.find(string.lower(term.name), "lazygit") ~= nil
+  local isnode = string.find(string.lower(term.name), "node") ~= nil
+  local ishtop = string.find(string.lower(term.name), "htop") ~= nil
+  local isncdu = string.find(string.lower(term.name), "ncdu") ~= nil
+  if (ispy or ishs or islg or isnode or ishtop or isncdu ) then
+    return
+  end
   vim.api.nvim_chan_send(
     term.job_id,
     'eval "$(oh-my-posh init zsh --config ~/.poshthemes/yfn.omp.json)" && clear\n'
@@ -50,18 +59,7 @@ local conf = {
   direction = "float",      -- 'float' | 'horizontal' | 'vertical'
   close_on_exit = true,
   shell = vim.o.shell,
-  on_create = function(term)
-    local ispy = string.find(string.lower(term.name), "python") ~= nil
-    local ishs = string.find(string.lower(term.name), "ghci") ~= nil
-    local islg = string.find(string.lower(term.name), "lazygit") ~= nil
-    local isnode = string.find(string.lower(term.name), "node") ~= nil
-    local ishtop = string.find(string.lower(term.name), "htop") ~= nil
-    local isncdu = string.find(string.lower(term.name), "ncdu") ~= nil
-    if (ispy or ishs or islg or isnode or ishtop or isncdu ) then
-      return
-    end
-    on_term_create(term)
-  end,
+  on_create = function(term) on_term_create(term) end,
   auto_scroll = true,
   highlights = {
     Normal = {

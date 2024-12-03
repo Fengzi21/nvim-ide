@@ -284,10 +284,10 @@ local mappings = {
 
   h = {
     name = "Haskell",
-      n = { ":ToggleTermSetName<CR>", "Set terminal name" },
-      l = { ":ToggleTermSendCurrentLine 9<CR>", "Send current line to ipython" },
-      v = { ":ToggleTermSendVisualLines 9<CR>", "Send visual lines to ipython" },
-      b = { ":ToggleTermSendVisualSelection 9<CR>", "Send visually selected block to ipython" },
+    n = { ":ToggleTermSetName<CR>", "Set terminal name" },
+    l = { ":ToggleTermSendCurrentLine 9<CR>", "Send current line to ipython" },
+    v = { ":ToggleTermSendVisualLines 9<CR>", "Send visual lines to ipython" },
+    b = { ":ToggleTermSendVisualSelection 9<CR>", "Send visually selected block to ipython" },
   },
 
   w = {
