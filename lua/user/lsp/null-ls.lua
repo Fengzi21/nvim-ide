@@ -23,18 +23,18 @@ null_ls.setup({
     -- formatting.black.with {
     --   extra_args = {
     --     "--fast",
-    --     "--line-length=120",
+    --     "--line-length=100",
     --   },
     -- },
     formatting.blue.with({
       extra_args = {
         "--fast",
-        "--line-length=120",
+        "--line-length=100",
       },
     }),
     formatting.stylua.with({
       extra_args = {
-        "--column-width=120",
+        "--column-width=100",
         "--line-endings=Unix",
         "--indent-type=Spaces",
         "--indent-width=2",
@@ -49,7 +49,7 @@ null_ls.setup({
         "--indent=2",
         "--whitespace=3",
         "--enable-decl",
-        "--line-length=120",
+        "--line-length=100",
       },
     }),
     formatting.clang_format.with({

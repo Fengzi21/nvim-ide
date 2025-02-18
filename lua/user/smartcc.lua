@@ -4,8 +4,8 @@ if not smarcc_status_ok then
 end
 
 local config = {
-  -- colorcolumn = { "80", "100", "120" },
-  colorcolumn = "120",
+  colorcolumn = { "80", "100", "120" },
+  -- colorcolumn = "100",
   disabled_filetypes = { "help", "text", "markdown" },
   custom_colorcolumn = {},
   scope = "file",
