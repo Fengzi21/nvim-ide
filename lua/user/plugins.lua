@@ -53,7 +53,7 @@ packer.init({
 return packer.startup(function(use)
   -- My plugins here --
   use({ "wbthomason/packer.nvim" }) -- Have packer manage itself
-  use({ "nvim-lua/plenary.nvim" })  -- Useful lua functions used by lots of plugins
+  use({ "nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
   use({ "numToStr/Comment.nvim" })
   use({ "JoosepAlviste/nvim-ts-context-commentstring" })
   use({ "nvim-tree/nvim-web-devicons" })
@@ -90,9 +90,9 @@ return packer.startup(function(use)
   use({ "xiyaowong/nvim-transparent" })
 
   -- cmp plugins for completion --
-  use({ "hrsh7th/nvim-cmp" })         -- The completion plugin
-  use({ "hrsh7th/cmp-buffer" })       -- buffer completions
-  use({ "hrsh7th/cmp-path" })         -- path completions
+  use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+  use({ "hrsh7th/cmp-buffer" }) -- buffer completions
+  use({ "hrsh7th/cmp-path" }) -- path completions
   use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
   use({ "hrsh7th/cmp-nvim-lsp" })
   use({ "hrsh7th/cmp-nvim-lua" })
@@ -103,11 +103,11 @@ return packer.startup(function(use)
     "L3MON4D3/LuaSnip",
     dependencies = { "rafamadriz/friendly-snippets" },
     build = "make install_jsregexp",
-  })                                      -- snippet engine
+  }) -- snippet engine
   use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
 
   -- LSP --
-  use({ "neovim/nvim-lspconfig" })           -- enable LSP
+  use({ "neovim/nvim-lspconfig" }) -- enable LSP
   use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
   -- null-ls has beem archived and will no longer receive updates
   use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
@@ -201,6 +201,10 @@ return packer.startup(function(use)
 
   -- Clipboard --
   use({ "ojroques/nvim-osc52" })
+
+  -- AI based
+  use({ "milanglacier/minuet-ai.nvim" })
+  use({ "Saghen/blink.cmp" })
 
   -- Automatically set up your configuration after cloning packer.nvim --
   -- Put this at the end after all plugins

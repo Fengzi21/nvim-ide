@@ -99,6 +99,8 @@ cmp.setup({
       "i",
       "s",
     }),
+    -- invoke minuet-ai completion manually
+    ["<C-m>"] = require("minuet").make_cmp_map(),
   }),
   formatting = {
     fields = { "kind", "abbr", "menu" },
@@ -116,12 +118,16 @@ cmp.setup({
     end,
   },
   sources = {
+    { name = "minuet" },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
     { name = "emoji" },
+  },
+  performance = {
+    fetching_timeout = 3000,
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

@@ -14,6 +14,6 @@ vim.g.mkdp_auto_close = 0
 -- Useful when you work in remote Vim and preview on local browser.
 -- For more details see: https://github.com/iamcco/markdown-preview.nvim/pull/9
 -- default empty
--- vim.g.mkdp_open_ip = '10.201.113.4'
+-- vim.g.mkdp_open_ip = '10.201.24.137'
 
 -- vim.g.mkdp_echo_preview_url = 1
