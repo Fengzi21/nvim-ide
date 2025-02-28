@@ -8,4 +8,6 @@ if hostname == "ws" then
   conda_version = "anaconda3"
 end
 
-vim.g.python3_host_prog = "~/" .. conda_version .. "/bin/python"
+local python = "~/" .. conda_version .. "/bin/python"
+
+vim.g.python3_host_prog = python
