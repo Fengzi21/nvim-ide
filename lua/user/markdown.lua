@@ -9,7 +9,7 @@ local username = vim.fn.system("whoami"):gsub("\n", "") -- Remove newline
 
 if username == "liuyf" then
   vim.g.mkdp_open_to_the_world = 1
-  vim.g.mkdp_open_ip = "10.201.24.137"
+  vim.g.mkdp_open_ip = "10.201.36.11"
   vim.g.mkdp_port = 7777
   vim.g.mkdp_echo_preview_url = 1
 end
