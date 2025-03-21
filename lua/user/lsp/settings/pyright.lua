@@ -1,6 +1,9 @@
+local python = vim.fn.system("which python"):gsub("\n", "") -- Remove newline
+
 return {
   settings = {
     python = {
+      pythonPath = python,
       analysis = {
         autoSearchPaths = true,
         typeCheckingMode = "off",
