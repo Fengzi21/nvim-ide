@@ -1,6 +1,6 @@
 vim.loader.enable()
 
--- require("user.python_host_prog")
+require("user.python_host_prog")
 require("user.options")
 require("user.keymaps")
 require("user.plugins")

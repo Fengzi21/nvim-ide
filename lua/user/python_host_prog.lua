@@ -10,4 +10,7 @@ end
 
 local python = "~/" .. conda_version .. "/bin/python"
 
+-- Get python
+-- local python = vim.fn.system("which python"):gsub("\n", "") -- Remove newline
+
 vim.g.python3_host_prog = python
