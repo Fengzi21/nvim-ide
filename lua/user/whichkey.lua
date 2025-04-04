@@ -304,6 +304,17 @@ local mappings = {
     v = { ":Ydv<CR>", "Query words from selected." },
     d = { ":Yde<CR>", "Query words from input." },
   },
+
+  -- swap
+  S = {
+    name = "swap",
+    ["="] = {
+      function()
+        vim.cmd([[s/\(\S\+\) *= *\(\S\+\)/\2 = \1/]])
+      end,
+      "Swap variables around =",
+    },
+  },
 }
 
 which_key.setup(setup) ---@diagnostic disable-line: redundant-parameter
