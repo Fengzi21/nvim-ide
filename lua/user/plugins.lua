@@ -61,7 +61,15 @@ return packer.startup(function(use)
   use({ "echasnovski/mini.nvim", version = "*" })
   use({ "moll/vim-bbye" })
   use({ "ahmedkhalf/project.nvim" })
-  use({ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} })
+
+  local v = vim.version()
+  -- Check if version is <= 0.9.5
+  if v.major == 0 and v.minor == 9 and v.patch <= 5 then
+    use({ "lukas-reineke/indent-blankline.nvim", tag="v3.8.6", main = "ibl", opts = {} })
+  else
+    use({ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} })
+  end
+
   use({ "goolord/alpha-nvim" })
   use({ "folke/which-key.nvim", tag = "v2.1.0" })
 

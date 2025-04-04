@@ -306,13 +306,12 @@ local mappings = {
   },
 
   -- swap
-  S = {
-    name = "swap",
+  [" "] = {
     ["="] = {
       function()
         vim.cmd([[s/\(\S\+\) *= *\(\S\+\)/\2 = \1/]])
       end,
-      "Swap variables around =",
+      "Swap variables around equal sign =",
     },
   },
 }
