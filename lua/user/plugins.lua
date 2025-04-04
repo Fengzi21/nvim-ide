@@ -102,6 +102,7 @@ return packer.startup(function(use)
   use({
     "L3MON4D3/LuaSnip",
     dependencies = { "rafamadriz/friendly-snippets" },
+    requires = { "rafamadriz/friendly-snippets" },
     build = "make install_jsregexp",
   }) -- snippet engine
   use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
@@ -109,11 +110,18 @@ return packer.startup(function(use)
   -- LSP --
   use({ "neovim/nvim-lspconfig" }) -- enable LSP
   use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
+
   -- null-ls has beem archived and will no longer receive updates
-  use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
+  -- use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 
   -- none-ls is now a community fork of null-ls.nvim
-  -- use { "nvimtools/none-ls.nvim" }  -- lack of formatters: blue, rustfmt, flake8
+  -- lack of formatters: blue, rustfmt, flake8
+  use({
+    "nvimtools/none-ls.nvim",
+    requires = {
+      "nvimtools/none-ls-extras.nvim",
+    },
+  })
 
   use({ "RRethy/vim-illuminate" })
 

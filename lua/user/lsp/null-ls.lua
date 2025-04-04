@@ -20,13 +20,9 @@ null_ls.setup({
       extra_filetypes = { "toml" },
       extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote", "--print-widt=100" },
     }),
-    -- formatting.black.with {
-    --   extra_args = {
-    --     "--fast",
-    --     "--line-length=100",
-    --   },
-    -- },
-    formatting.blue.with({
+    -- formatting.black.with({
+    -- formatting.blue.with({
+    require("none-ls.formatting.blue").with({
       extra_args = {
         "--fast",
         "--line-length=100",
@@ -43,7 +39,8 @@ null_ls.setup({
         "--collapse-simple-statement=Never",
       },
     }),
-    formatting.rustfmt,
+    -- formatting.rustfmt,
+    require("none-ls.formatting.rustfmt"),
     formatting.fprettify.with({
       extra_args = {
         "--indent=2",
@@ -56,7 +53,8 @@ null_ls.setup({
       filetypes = { "c", "cpp", "objc", "objcpp" }, -- Specify file types
       extra_args = { "--length=100" },
     }),
-    formatting.asmfmt,
-    diagnostics.flake8,
+    -- formatting.asmmt,
+    -- diagnostics.flake8,
+    require("none-ls.diagnostics.flake8"),
   },
 })
