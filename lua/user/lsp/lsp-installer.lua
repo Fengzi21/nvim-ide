@@ -24,7 +24,8 @@ local servers = {
   "marksman",
   "asm_lsp",
   "cmake",
-  "mojo"
+  "mojo",
+  "gopls",
 }
 
 lsp_installer.setup()

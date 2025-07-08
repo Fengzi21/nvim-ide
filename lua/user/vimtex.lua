@@ -21,5 +21,5 @@ vim.g.vimtex_compiler_silent = 0
 vim.g.vimtex_complete_enabled = 0
 -- vim.opt.conceallevel = 1
 -- vim.g.tex_conceal = "abdmg"
-vim.cmd([[autocmd Filetype tex setl spell spelllang=de,en
+vim.cmd([[autocmd Filetype tex setl spell spelllang=en
     autocmd Filetype tex setl updatetime=250]])
