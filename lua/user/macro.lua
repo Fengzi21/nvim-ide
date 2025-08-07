@@ -13,3 +13,6 @@ vim.fn.setreg("i", "xi\\(\027pa\\)\027")
 
 -- 宏 d: turn selected to display math
 vim.fn.setreg("d", "xi\\[\027pa\\]\027")
+
+-- swap parts seperated by underscore _
+vim.fn.setreg("s", ":%s/\\(\\w\\+\\)_\\(\\w\\+\\)/\\2_\\1/g\r")

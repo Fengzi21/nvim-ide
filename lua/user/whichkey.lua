@@ -314,6 +314,10 @@ local mappings = {
       end,
       "Swap variables around =",
     },
+    w = {
+      ":SwapVar<CR>",
+      "Swap parts seperated by underscore"
+    }
   },
 }
 
