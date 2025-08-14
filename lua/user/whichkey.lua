@@ -108,6 +108,12 @@ local mappings = {
     t = { ":lua require'dap'.terminate()<CR>", "Terminate" },
   },
 
+  E = {
+    name = "Execute",
+    b = { ":RunAsBash<CR>", "Run current line as bash" },
+    p = { ":RunAsPython<CR>", "Run current line as python" },
+  },
+
   -- For Telescope
   -- live_grep requires ripgrep
   f = {
@@ -316,8 +322,8 @@ local mappings = {
     },
     w = {
       ":SwapVar<CR>",
-      "Swap parts seperated by underscore"
-    }
+      "Swap parts seperated by underscore",
+    },
   },
 }
 

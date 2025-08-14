@@ -26,4 +26,29 @@ function SwapWordPartsUnderCursor()
   vim.notify("No swap-able variable under cursor (like a_b)", vim.log.levels.WARN)
 end
 
+-- 运行当前行并插到下一行
+local function run_current_line(cmd)
+  local line = vim.api.nvim_get_current_line()
+  local output = vim.fn.system(cmd, line)
+  local output_lines = vim.split(output, "\n", { plain = true, trimempty = true })
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  vim.api.nvim_buf_set_lines(0, row, row, false, output_lines)
+end
+
+-- 运行当前行作为 Shell 命令
+local function run_shell()
+  run_current_line("bash")
+end
+
+-- 运行当前行作为 Python 代码
+local function run_python()
+  local line = vim.api.nvim_get_current_line()
+  local output = vim.fn.system({ "python", "-c", line })
+  local output_lines = vim.split(output, "\n", { plain = true, trimempty = true })
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  vim.api.nvim_buf_set_lines(0, row, row, false, output_lines)
+end
+
 vim.api.nvim_create_user_command("SwapVar", SwapWordPartsUnderCursor, {})
+vim.api.nvim_create_user_command("RunAsBash", run_shell, {})
+vim.api.nvim_create_user_command("RunAsPython", run_python, {})
