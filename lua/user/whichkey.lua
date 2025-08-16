@@ -92,6 +92,9 @@ local mappings = {
     },
     c = { ":Bdelete!<CR>", "Close Buffer" },
     C = { ":%bd <bar> e# <bar> bd#<CR>", "Close All Buffer" },
+    s = { ":Scratch<CR>", "Create scratch buffer in new tab" },
+    h = { ":HScratch<CR>", "Create horizontal scratch buffer" },
+    v = { ":VScratch<CR>", "Create vertical scratch buffer" },
   },
 
   -- DAP

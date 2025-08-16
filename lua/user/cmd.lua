@@ -49,6 +49,29 @@ local function run_python()
   vim.api.nvim_buf_set_lines(0, row, row, false, output_lines)
 end
 
+local function create_scratch_buffer(cmd)
+  vim.cmd(cmd)
+  vim.cmd("file *scratch*")
+  vim.bo.buftype = "nofile"
+  vim.bo.bufhidden = "hide"
+  vim.bo.swapfile = false
+end
+
+local function scratch_buffer()
+  create_scratch_buffer("enew")
+end
+
+local function horizontal_scratch_buffer()
+  create_scratch_buffer("new")
+end
+
+local function vertical_scratch_buffer()
+  create_scratch_buffer("vnew")
+end
+
 vim.api.nvim_create_user_command("SwapVar", SwapWordPartsUnderCursor, {})
 vim.api.nvim_create_user_command("RunAsBash", run_shell, {})
 vim.api.nvim_create_user_command("RunAsPython", run_python, {})
+vim.api.nvim_create_user_command("Scratch", scratch_buffer, {})
+vim.api.nvim_create_user_command("VScratch", vertical_scratch_buffer, {})
+vim.api.nvim_create_user_command("HScratch", horizontal_scratch_buffer, {})
