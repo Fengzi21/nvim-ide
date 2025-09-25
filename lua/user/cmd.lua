@@ -69,6 +69,33 @@ local function vertical_scratch_buffer()
   create_scratch_buffer("vnew")
 end
 
+-- Helper to wrap word under cursor
+local function wrap_word(wrapper)
+  local word = vim.fn.expand("<cword>") -- word under cursor
+  local replacement = wrapper .. word .. wrapper
+  vim.cmd("normal! ciw" .. replacement) -- change inner word
+end
+
+-- Create the command
+vim.api.nvim_create_user_command("MarkdownBold", function()
+  wrap_word("**")
+end, {})
+vim.api.nvim_create_user_command("MarkdownItalic", function()
+  wrap_word("*")
+end, {})
+
+-- Function to wrap word under cursor as a markdown link
+local function add_link()
+  local word = vim.fn.expand("<cword>") -- get word under cursor
+  local replacement = "[" .. word .. "]()" -- add link template
+  vim.cmd("normal! ciw" .. replacement) -- replace the word
+end
+
+-- Create the command
+vim.api.nvim_create_user_command("MarkdownLink", function()
+  add_link()
+end, {})
+
 vim.api.nvim_create_user_command("SwapVar", SwapWordPartsUnderCursor, {})
 vim.api.nvim_create_user_command("RunAsBash", run_shell, {})
 vim.api.nvim_create_user_command("RunAsPython", run_python, {})

@@ -217,7 +217,10 @@ local mappings = {
     s = { ":MarkdownPreviewStop<CR>", "Stop Markdown Preview" },
     t = { ":MarkdownPreviewToggle<CR>", "Toggle Markdown Preview" },
     f = { ":Glow %<CR>", "Glow Preview File" },
-    b = { ":Glow<CR>", "Glow Preview Current Buffer" },
+    g = { ":Glow<CR>", "Glow Preview Current Buffer" },
+    b = { ":MarkdownBold<CR>", "Wrap word by **" },
+    i = { ":MarkdownItalic<CR>", "Wrap word by *" },
+    l = { ":MarkdownLink<CR>", "Add link to word." },
   },
 
   r = {
