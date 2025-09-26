@@ -82,7 +82,6 @@ local mappings = {
   ["a"] = { ":Alpha<CR>", "Alpha" },
   ["e"] = { ":NvimTreeToggle<CR>", "Explorer" },
   ["q"] = { ":q!<CR>", "Quit" },
-  ["H"] = { ":nohlsearch<CR>", "No Highlight" },
 
   b = {
     "Buffer",
@@ -211,15 +210,23 @@ local mappings = {
     },
   },
 
+  h = {
+    name = "HTML",
+    a = { ":HtmlWrapA<CR>", "Wrap word under the cursor by <a> tag." },
+    u = { ":HtmlWrapU<CR>", "Wrap word under the cursor by <u> tag." },
+  },
+
   m = {
     name = "Markdown",
     p = { ":MarkdownPreview<CR>", "Preview Markdown" },
-    s = { ":MarkdownPreviewStop<CR>", "Stop Markdown Preview" },
+    P = { ":MarkdownPreviewStop<CR>", "Stop Markdown Preview" },
     t = { ":MarkdownPreviewToggle<CR>", "Toggle Markdown Preview" },
-    f = { ":Glow %<CR>", "Glow Preview File" },
-    g = { ":Glow<CR>", "Glow Preview Current Buffer" },
+    g = { ":Glow %<CR>", "Glow Preview File" },
+    G = { ":Glow<CR>", "Glow Preview Current Buffer" },
     b = { ":MarkdownBold<CR>", "Wrap word by **" },
     i = { ":MarkdownItalic<CR>", "Wrap word by *" },
+    c = { ":MarkdownCode<CR>", "Wrap word by `" },
+    s = { ":MarkdownStroke<CR>", "Wrap word by `" },
     l = { ":MarkdownLink<CR>", "Add link to word." },
   },
 
@@ -294,7 +301,7 @@ local mappings = {
     },
   },
 
-  h = {
+  H = {
     name = "Haskell",
     n = { ":ToggleTermSetName<CR>", "Set terminal name" },
     l = { ":ToggleTermSendCurrentLine 9<CR>", "Send current line to ipython" },

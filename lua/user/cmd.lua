@@ -83,6 +83,25 @@ end, {})
 vim.api.nvim_create_user_command("MarkdownItalic", function()
   wrap_word("*")
 end, {})
+vim.api.nvim_create_user_command("MarkdownStroke", function()
+  wrap_word("~~")
+end, {})
+vim.api.nvim_create_user_command("MarkdownCode", function()
+  wrap_word("`")
+end, {})
+
+local function warp_by_tag(tag)
+  local word = vim.fn.expand("<cword>") -- word under cursor
+  local replacement = "<" .. tag .. ">" .. word .. "</" .. tag .. ">"
+  vim.cmd("normal! ciw" .. replacement) -- change inner word
+end
+
+vim.api.nvim_create_user_command("HtmlWrapA", function()
+  warp_by_tag("a")
+end, {})
+vim.api.nvim_create_user_command("HtmlWrapU", function()
+  warp_by_tag("u")
+end, {})
 
 -- Function to wrap word under cursor as a markdown link
 local function add_link()
