@@ -279,7 +279,7 @@ local mappings = {
     C = { ":Telescope commands<CR>", "Commands" },
   },
 
-  t = {
+  T = {
     name = "Terminal",
     g = { ":lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     n = { ":lua _NODE_TOGGLE()<CR>", "Node" },
@@ -299,6 +299,17 @@ local mappings = {
       v = { ":ToggleTermSendVisualLines 7<CR>", "Send visual lines to ipython" },
       b = { ":ToggleTermSendVisualSelection 7<CR>", "Send visually selected block to ipython" },
     },
+  },
+
+  t = {
+    name = "Tex",
+			t = { ':VimtexCompileSS<CR>', "Start single shot compilation."},
+			v = { ':VimtexView<CR>', "View pdf for current project." },
+			s = { ':VimtexStatus<CR>', "Show compilation status for current project." },
+			e = { ':VimtexErrors<CR>', "Opens the quickfix window where the errors are hidden" },
+			c = { ':VimtexClean<CR>', "Clean auxiliary files." },
+			C = { ':VimtexClean!<CR>', "Clean auxiliary files and output file." },
+      i = { 'o\\item ' },
   },
 
   H = {
