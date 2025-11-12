@@ -303,12 +303,12 @@ local mappings = {
 
   t = {
     name = "Tex",
-			t = { ':VimtexCompileSS<CR>', "Start single shot compilation."},
+			c = { ':VimtexCompileSS<CR>', "Start single shot compilation."},
 			v = { ':VimtexView<CR>', "View pdf for current project." },
 			s = { ':VimtexStatus<CR>', "Show compilation status for current project." },
 			e = { ':VimtexErrors<CR>', "Opens the quickfix window where the errors are hidden" },
-			c = { ':VimtexClean<CR>', "Clean auxiliary files." },
-			C = { ':VimtexClean!<CR>', "Clean auxiliary files and output file." },
+			d = { ':VimtexClean<CR>', "Delete auxiliary files." },
+			D = { ':VimtexClean!<CR>', "Delete auxiliary files and output file." },
       i = { 'o\\item ' },
   },
 
