@@ -29,7 +29,7 @@ local function on_term_create(term)
   local isnode = string.find(string.lower(term.name), "node") ~= nil
   local ishtop = string.find(string.lower(term.name), "htop") ~= nil
   local isncdu = string.find(string.lower(term.name), "ncdu") ~= nil
-  if (ispy or ishs or islg or isnode or ishtop or isncdu ) then
+  if ispy or ishs or islg or isnode or ishtop or isncdu then
     return
   end
   vim.api.nvim_chan_send(
@@ -53,13 +53,15 @@ local conf = {
   shade_terminals = true,
   shading_factor = 2,
   start_in_insert = true,
-  insert_mappings = true,   -- whether or not the open mapping applies in insert model
+  insert_mappings = true, -- whether or not the open mapping applies in insert model
   terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
   persist_size = true,
-  direction = "float",      -- 'float' | 'horizontal' | 'vertical'
+  direction = "float", -- 'float' | 'horizontal' | 'vertical'
   close_on_exit = true,
   shell = vim.o.shell,
-  on_create = function(term) on_term_create(term) end,
+  on_create = function(term)
+    on_term_create(term)
+  end,
   auto_scroll = true,
   highlights = {
     Normal = {

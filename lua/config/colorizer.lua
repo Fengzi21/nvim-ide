@@ -5,7 +5,7 @@ end
 
 colorizer.setup({
   filetypes = {
-    "*",                  -- Highlight all files, but customize some others.
+    "*", -- Highlight all files, but customize some others.
     css = { css = true }, -- Enable parsing rgb(...) functions in css.
   },
 })

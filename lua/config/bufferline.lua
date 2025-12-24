@@ -6,11 +6,11 @@ end
 ---@diagnostic disable-next-line: redundant-parameter
 bufferline.setup({
   options = {
-    numbers = "ordinal",               -- "buffer_id" | "ordinal" "both"
-    close_command = "Bdelete! %d",       -- can be a string | function, see "Mouse actions"
+    numbers = "ordinal", -- "buffer_id" | "ordinal" "both"
+    close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
     right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
     offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-    separator_style = "padded",          -- | "thick" | "thin" | { 'any', 'any' },
+    separator_style = "padded", -- | "thick" | "thin" | { 'any', 'any' },
     -- theme = 'monokaipro'
   },
   -- highlights = {

@@ -98,7 +98,9 @@ local mode_color = {
 
 ins_left({
   function()
-    vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg)
+    vim.api.nvim_command(
+      "hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg
+    )
     return "▊"
   end,
   color = "LualineMode",
@@ -116,7 +118,9 @@ ins_left({
 ins_left({
   function()
     -- auto change color according to neovim modes
-    vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg)
+    vim.api.nvim_command(
+      "hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg
+    )
     return ""
   end,
   color = "LualineMode",
@@ -237,7 +241,9 @@ ins_right({
 ins_right({
   function()
     -- auto change color according to neovim modes
-    vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg)
+    vim.api.nvim_command(
+      "hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. colors.bg
+    )
     return "▊"
   end,
   color = "LualineMode",
