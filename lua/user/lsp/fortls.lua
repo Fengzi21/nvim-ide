@@ -1,4 +1,4 @@
-return {
+vim.lsp.config("fortls", {
   cmd = {
     "fortls",
     "--hover_signature",

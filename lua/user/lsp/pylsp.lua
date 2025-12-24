@@ -1,4 +1,4 @@
-return {
+vim.lsp.config("pylsp", {
   settings = {
     pylsp = {
       plugins = {

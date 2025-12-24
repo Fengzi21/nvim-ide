@@ -1,8 +1,7 @@
-local status_ok, _ = pcall(require, "vim.lsp.config")
-if not status_ok then
-  return
-end
+-- Global defaults (capabilities, diagnostics, handlers)
+require("user.lsp._core")
 
-require("user.lsp.lsp-installer")
-require("user.lsp.handlers").setup()
-require("user.lsp.null-ls")
+-- Enable servers (must be explicit in 0.11+)
+require("user.lsp.enable")
+
+require("user.lsp.format.none_ls")

@@ -1,6 +1,6 @@
 local python = vim.fn.system("which python"):gsub("\n", "") -- Remove newline
 
-return {
+vim.lsp.config("pyright", {
   settings = {
     python = {
       -- pythonPath = python,
