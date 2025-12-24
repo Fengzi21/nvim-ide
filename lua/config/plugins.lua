@@ -37,7 +37,7 @@ lazy.setup({
   { "ahmedkhalf/project.nvim", lazy = false },
   { "lukas-reineke/indent-blankline.nvim", lazy = false },
   { "goolord/alpha-nvim", lazy = false },
-  { "folke/which-key.nvim", version = "v2.1.0", lazy = false },
+  { "folke/which-key.nvim", lazy = false },
 
   { "m4xshen/smartcolumn.nvim", lazy = false },
   { "nvim-lualine/lualine.nvim", lazy = false },
@@ -147,7 +147,7 @@ lazy.setup({
 
   -- Jupyter
   { "kana/vim-textobj-user", lazy = false },
-  { "kana/vim-textobj-line", lazy = false },
+  { "kana/vim-textobj-line", dependencies = { "kana/vim-textobj-user" }, lazy = false },
   {
     "GCBallesteros/vim-textobj-hydrogen",
     dependencies = { "kana/vim-textobj-user", "kana/vim-textobj-line" },

@@ -27,11 +27,11 @@ local setup = {
   -- to enable all native operators, set the preset / operators plugin above
   -- operators = { gc = "Comments" },
   -- key_labels = {
-  -- 	-- override the label used to display some keys. It doesn't effect WK in any other way.
-  -- 	-- For example:
-  -- 	-- ["<space>"] = "SPC",
-  -- 	-- ["<CR>"] = "RET",
-  -- 	-- ["<tab>"] = "TAB",
+  --   -- override the label used to display some keys. It doesn't effect WK in any other way.
+  --   -- For example:
+  --   -- ["<space>"] = "SPC",
+  --   -- ["<CR>"] = "RET",
+  --   -- ["<tab>"] = "TAB",
   -- },
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
@@ -39,15 +39,15 @@ local setup = {
     group = "+ ", -- symbol prepended to a group
   },
   -- popup_mappings = {
-  -- 	scroll_down = "<c-d>", -- binding to scroll down inside the popup
-  -- 	scroll_up = "<c-u>", -- binding to scroll up inside the popup
+  --   scroll_down = "<c-d>", -- binding to scroll down inside the popup
+  --   scroll_up = "<c-u>", -- binding to scroll up inside the popup
   -- },
   -- window = {
-  -- 	border = "rounded", -- none, single, double, shadow
-  -- 	position = "bottom", -- bottom, top
-  -- 	margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-  -- 	padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-  -- 	winblend = 0,
+  --   border = "rounded", -- none, single, double, shadow
+  --   position = "bottom", -- bottom, top
+  --   margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+  --   padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+  --   winblend = 0,
   -- },
   layout = {
     height = { min = 4, max = 25 }, -- min and max height of the columns
@@ -61,21 +61,12 @@ local setup = {
   -- triggers = "auto", -- automatically setup triggers
   -- triggers = {"<leader>"} -- or specify a list manually
   -- triggers_blacklist = {
-  -- 	-- list of mode / prefixes that should never be hooked by WhichKey
-  -- 	-- this is mostly relevant for key maps that start with a native binding
-  -- 	-- most people should not need to change this
-  -- 	i = { "j", "k" },
-  -- 	v = { "j", "k" },
+  --   -- list of mode / prefixes that should never be hooked by WhichKey
+  --   -- this is mostly relevant for key maps that start with a native binding
+  --   -- most people should not need to change this
+  --   i = { "j", "k" },
+  --   v = { "j", "k" },
   -- },
-}
-
-local opts = {
-  mode = { "n", "v", "x" },
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
 }
 
 local mappings = {
@@ -304,13 +295,13 @@ local mappings = {
 
   t = {
     name = "Tex",
-			c = { ':VimtexCompileSS<CR>', "Start single shot compilation."},
-			v = { ':VimtexView<CR>', "View pdf for current project." },
-			s = { ':VimtexStatus<CR>', "Show compilation status for current project." },
-			e = { ':VimtexErrors<CR>', "Opens the quickfix window where the errors are hidden" },
-			d = { ':VimtexClean<CR>', "Delete auxiliary files." },
-			D = { ':VimtexClean!<CR>', "Delete auxiliary files and output file." },
-      i = { 'o\\item ' },
+    c = { ":VimtexCompileSS<CR>", "Start single shot compilation." },
+    v = { ":VimtexView<CR>", "View pdf for current project." },
+    s = { ":VimtexStatus<CR>", "Show compilation status for current project." },
+    e = { ":VimtexErrors<CR>", "Opens the quickfix window where the errors are hidden" },
+    d = { ":VimtexClean<CR>", "Delete auxiliary files." },
+    D = { ":VimtexClean!<CR>", "Delete auxiliary files and output file." },
+    i = { "o\\item " },
   },
 
   H = {
@@ -353,4 +344,65 @@ local mappings = {
 }
 
 which_key.setup(setup) ---@diagnostic disable-line: redundant-parameter
-which_key.register(mappings, opts)
+
+-- which-key v3+ uses the "spec" format via wk.add().
+-- This keeps your existing mapping table, but converts it at runtime.
+local spec = {}
+
+local function is_leaf(tbl)
+  if type(tbl) ~= "table" then
+    return false
+  end
+
+  local cmd = tbl[1]
+  local desc = tbl[2]
+  if (type(cmd) == "string" or type(cmd) == "function") and type(desc) == "string" then
+    for k, _ in pairs(tbl) do
+      if type(k) ~= "number" then
+        return false
+      end
+    end
+    return true
+  end
+
+  return false
+end
+
+local function group_name(tbl)
+  if type(tbl) ~= "table" then
+    return nil
+  end
+  if type(tbl.name) == "string" then
+    return tbl.name
+  end
+  if type(tbl[1]) == "string" and not is_leaf(tbl) then
+    return tbl[1]
+  end
+  return nil
+end
+
+local function walk(prefix, node)
+  for k, v in pairs(node) do
+    if k ~= "name" and k ~= 1 then
+      local key = prefix .. k
+      if is_leaf(v) then
+        table.insert(spec, { key, v[1], desc = v[2] })
+      elseif type(v) == "table" then
+        local g = group_name(v)
+        if g then
+          table.insert(spec, { key, group = g })
+        end
+        walk(key, v)
+      end
+    end
+  end
+end
+
+walk("<leader>", mappings)
+
+which_key.add(spec, {
+  mode = { "n", "v", "x" },
+  silent = true,
+  noremap = true,
+  nowait = true,
+})

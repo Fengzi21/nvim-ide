@@ -6,7 +6,7 @@ return {
   "fortls",
   "jdtls",
   "ltex",
-  "mojo",
+  -- "mojo",
   "bashls",
   "jsonls",
   "yamlls",

@@ -1,5 +1,18 @@
 vim.loader.enable()
 
+-- Neovim 0.10+ switched the health API from `vim.health.report_*` to
+-- `vim.health.{start,ok,warn,info,error}`. Some plugins still use the old names.
+do
+	local health = vim.health
+	if health and not health.report_start and health.start then
+		health.report_start = health.start
+		health.report_ok = health.ok
+		health.report_warn = health.warn
+		health.report_info = health.info
+		health.report_error = health.error
+	end
+end
+
 -- If you previously used native packages (Packer, manual pack/*/start), Neovim will
 -- auto-load anything under stdpath('data')/site/pack/*/start.
 -- Since this config is now fully lazy.nvim-managed, remove that packpath to avoid
