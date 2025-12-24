@@ -1,4 +1,4 @@
-local servers = {
+return {
   "lua_ls",
   "pyright",
   "pylsp",
@@ -13,5 +13,3 @@ local servers = {
   "rust_analyzer",
   "gopls",
 }
-
-vim.lsp.enable(servers)

@@ -140,12 +140,13 @@ local mappings = {
   F = { ":Telescope live_grep theme=ivy<CR>", "Find Text" },
 
   p = {
-    name = "Packer",
-    c = { ":PackerCompile<CR>", "Compile" },
-    i = { ":PackerInstall<CR>", "Install" },
-    s = { ":PackerSync<CR>", "Sync" },
-    S = { ":PackerStatus<CR>", "Status" },
-    u = { ":PackerUpdate<CR>", "Update" },
+    name = "Lazy",
+    p = { ":Lazy<CR>", "UI" },
+    s = { ":Lazy sync<CR>", "Sync" },
+    u = { ":Lazy update<CR>", "Update" },
+    c = { ":Lazy clean<CR>", "Clean" },
+    C = { ":Lazy check<CR>", "Check" },
+    l = { ":Lazy log<CR>", "Log" },
   },
 
   g = {
@@ -191,7 +192,7 @@ local mappings = {
     },
     f = { ":lua vim.lsp.buf.format({ async = true })<CR>", "Format" },
     i = { ":LspInfo<CR>", "Info" },
-    I = { ":LspInstallInfo<CR>", "Installer Info" },
+    I = { ":Mason<CR>", "Mason" },
     j = {
       ":lua vim.diagnostic.goto_next()<CR>",
       "Next Diagnostic",
