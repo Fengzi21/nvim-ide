@@ -12,4 +12,5 @@ return {
   "yamlls",
   "rust_analyzer",
   "gopls",
+  "tinymist",
 }

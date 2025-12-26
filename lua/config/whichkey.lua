@@ -293,8 +293,8 @@ local mappings = {
     },
   },
 
-  t = {
-    name = "Tex",
+  v = {
+    name = "Vimtex",
     c = { ":VimtexCompileSS<CR>", "Start single shot compilation." },
     v = { ":VimtexView<CR>", "View pdf for current project." },
     s = { ":VimtexStatus<CR>", "Show compilation status for current project." },
@@ -302,6 +302,21 @@ local mappings = {
     d = { ":VimtexClean<CR>", "Delete auxiliary files." },
     D = { ":VimtexClean!<CR>", "Delete auxiliary files and output file." },
     i = { "o\\item " },
+  },
+
+  t = {
+    name = 'Typst Preview',
+    u = { ":TypstPreviewUpdate<CR>", "Update Typst Preview" },
+    p = { ":TypstPreview<CR>", "Start Typst Preview" },
+    s = { ":TypstPreviewStop<CR>", "Stop Typst Preview" },
+    S = { ":TypstPreviewSyncCursor<CR>", "Scroll preview to the current cursor position." },
+    c = { ":TypstPreviewFollowCursor<CR>", "Scroll preview as cursor moves (default)." },
+    C = { ":TypstPreviewNoFollowCursor<CR>", "Don't scroll preview as cursor moves." },
+    t = {
+      name = "Toggle",
+      p = { ":TypstPreviewToggle<CR>", "Toggle Typst Preview" },
+      c = { ":TypstPreviewFollowCursorToggle<CR>", "Toggle following cursor" },
+    }
   },
 
   H = {
