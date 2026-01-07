@@ -19,6 +19,11 @@ end
 -- double-loading old plugins (e.g. packer.bak leftovers).
 vim.opt.packpath:remove(vim.fn.stdpath("data") .. "/site")
 
+
+-- Disable providers we don't use to speed up startup time
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+
 require("config.python_host_prog")
 require("config.options")
 require("config.keymaps")

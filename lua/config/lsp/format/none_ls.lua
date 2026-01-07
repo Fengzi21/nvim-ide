@@ -55,6 +55,9 @@ null_ls.setup({
     }),
     -- formatting.asmmt,
     -- diagnostics.flake8,
+    formatting.typstyle.with({
+      filetypes = { "typ", "typst" },
+    }),
     require("none-ls.diagnostics.flake8"),
   },
 })
