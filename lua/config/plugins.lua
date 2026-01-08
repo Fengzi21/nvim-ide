@@ -160,9 +160,9 @@ lazy.setup({
 
   -- Typst
   {
-    'chomosuke/typst-preview.nvim',
+    "chomosuke/typst-preview.nvim",
     lazy = false, -- or ft = 'typst'
-    version = '1.*',
+    version = "1.*",
     opts = {}, -- lazy.nvim will implicitly calls `setup {}`
   },
 
@@ -182,6 +182,15 @@ lazy.setup({
 
   -- Mathematica
   { "voldikss/vim-mma", lazy = false },
+
+  -- image
+  {
+      'adelarsq/image_preview.nvim',
+      event = 'VeryLazy',
+      config = function()
+          require("image_preview").setup()
+      end
+  },
 }, {
   -- Keep your previous preference for SSH git URLs.
   git = {

@@ -130,7 +130,7 @@ local mappings = {
 
   F = { ":Telescope live_grep theme=ivy<CR>", "Find Text" },
 
-  p = {
+  L = {
     name = "Lazy",
     p = { ":Lazy<CR>", "UI" },
     s = { ":Lazy sync<CR>", "Sync" },
