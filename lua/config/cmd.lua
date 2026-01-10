@@ -121,3 +121,33 @@ vim.api.nvim_create_user_command("RunAsPython", run_python, {})
 vim.api.nvim_create_user_command("Scratch", scratch_buffer, {})
 vim.api.nvim_create_user_command("VScratch", vertical_scratch_buffer, {})
 vim.api.nvim_create_user_command("HScratch", horizontal_scratch_buffer, {})
+
+local function open_file_in_app(app)
+  local file = vim.fn.expand("%:p")
+
+  if file == "" then
+    vim.notify("No file associated with current buffer", vim.log.levels.ERROR)
+    return
+  end
+
+  vim.fn.jobstart({ "open", "-a", app, file }, {
+    detach = true,
+    on_stderr = function(_, data)
+      if data and #data > 0 then
+        vim.notify(table.concat(data, "\n"), vim.log.levels.ERROR)
+      end
+    end,
+  })
+end
+
+vim.api.nvim_create_user_command("OpenInEdge", function()
+  open_file_in_app("/Applications/Microsoft Edge.app")
+end, {
+  desc = "Open current buffer file in Microsoft Edge",
+})
+
+vim.api.nvim_create_user_command("OpenInUPDF", function()
+  open_file_in_app("/Applications/UPDF.app")
+end, {
+  desc = "Open current buffer file in UPDF",
+})

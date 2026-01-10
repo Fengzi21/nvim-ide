@@ -222,6 +222,12 @@ local mappings = {
     l = { ":MarkdownLink<CR>", "Add link to word." },
   },
 
+  o = {
+    name = "Open",
+    e = { ":OpenInEdge<CR>", "Open in Edge" },
+    u = { ":OpenInUPDF<CR>", "Open in UPDF" },
+  },
+
   r = {
     name = "Repl",
     o = { ":IronRepl<CR>", "Start a repl" },
