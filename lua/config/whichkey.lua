@@ -121,6 +121,7 @@ local mappings = {
     s = { ":Telescope grep_string<CR>", "Grep String" },
     E = { ":Telescope emoji<CR>", "Emoji Search" },
     e = { ":Telescope file_browser<CR>", "File Browser" },
+    m = { ":Telescope media_files<CR>", "Media Files" },
   },
 
   -- ["f"] = {
