@@ -177,7 +177,14 @@ lazy.setup({
 
   -- AI
   { "milanglacier/minuet-ai.nvim", lazy = false },
-  { "Saghen/blink.cmp", lazy = false },
+  {
+    "Saghen/blink.cmp",
+    dependencies = {
+      "saghen/blink.lib", -- required for blink.cmp v2
+      -- your other dependencies...
+    },
+    lazy = false,
+  },
   { "github/copilot.vim", lazy = false },
 
   -- Mathematica
@@ -185,11 +192,11 @@ lazy.setup({
 
   -- image
   {
-      'adelarsq/image_preview.nvim',
-      event = 'VeryLazy',
-      config = function()
-          require("image_preview").setup()
-      end
+    "adelarsq/image_preview.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("image_preview").setup()
+    end,
   },
 }, {
   -- Keep your previous preference for SSH git URLs.
