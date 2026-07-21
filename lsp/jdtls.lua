@@ -1,4 +1,4 @@
-vim.lsp.config("jdtls", {
+return {
   cmd = {
     "jdtls",
   },

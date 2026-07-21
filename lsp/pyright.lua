@@ -1,6 +1,9 @@
-local python = vim.fn.system("which python"):gsub("\n", "") -- Remove newline
+-- vim.fn.exepath works cross-platform (Windows/macOS/Linux); the old
+-- `vim.fn.system("which python")` relied on a Unix-only `which` binary
+-- and silently produced an empty string on Windows.
+local python = vim.fn.exepath("python") -- currently unused below, kept for future pythonPath wiring
 
-vim.lsp.config("pyright", {
+return {
   settings = {
     python = {
       -- pythonPath = python,

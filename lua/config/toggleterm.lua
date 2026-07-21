@@ -4,11 +4,12 @@ if not status_ok then
 end
 
 local fmt = string.format
+local platform = require("config.util.platform")
 
 -- config for powershell
-if package.config:sub(1, 1) == "\\" then
+if platform.is_windows then
   local powershell_options = {
-    shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
+    shell = platform.default_shell(),
     ---@format disable-next
     shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
     shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
@@ -23,6 +24,13 @@ end
 
 -- Function to be executed when a terminal is created
 local function on_term_create(term)
+  -- This oh-my-posh/zsh init only makes sense on Unix shells; running it
+  -- unconditionally used to fire on Windows too, where it's not valid
+  -- pwsh/powershell syntax and just spammed errors into every terminal.
+  if platform.is_windows or not platform.has_exe("zsh") then
+    return
+  end
+
   local ispy = string.find(string.lower(term.name), "python") ~= nil
   local ishs = string.find(string.lower(term.name), "ghci") ~= nil
   local islg = string.find(string.lower(term.name), "lazygit") ~= nil

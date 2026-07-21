@@ -8,15 +8,19 @@ if not dap_ui_status_ok then
   return
 end
 
-local dap_install_status_ok, dap_install = pcall(require, "dap-install")
-if not dap_install_status_ok then
+-- mason-nvim-dap.nvim replaces the previously used (and now unmaintained)
+-- ravenxrz/DAPInstall.nvim; it installs debug adapters via mason.nvim the
+-- same way config/lsp/mason.lua installs LSP servers.
+local mason_dap_status_ok, mason_dap = pcall(require, "mason-nvim-dap")
+if not mason_dap_status_ok then
   return
 end
 
-dap_install.setup({})
-
-dap_install.config("python", {})
--- add other configs here
+mason_dap.setup({
+  ensure_installed = { "python" }, -- add other debugpy/codelldb/etc. adapters here
+  automatic_installation = true,
+  handlers = {}, -- use default handler for all installed adapters
+})
 
 dapui.setup({
   layouts = {

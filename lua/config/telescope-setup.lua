@@ -43,19 +43,6 @@ telescope.setup({
       },
     },
 
-    emoji = {
-      action = function(emoji)
-        -- argument emoji is a table.
-        -- {name="", value="", cagegory="", description=""}
-
-        vim.fn.setreg("*", emoji.value)
-        -- print([[Press p or "*p to paste this emoji]] .. emoji.value)
-
-        -- insert emoji when picked
-        vim.api.nvim_put({ emoji.value }, "c", false, true)
-      end,
-    },
-
     media_files = {
       -- filetypes whitelist
       filetypes = { "png", "webp", "jpg", "jpeg", "pdf" },
@@ -67,5 +54,4 @@ telescope.setup({
 -- you need to call load_extension, somewhere after setup function:
 telescope.load_extension("file_browser")
 telescope.load_extension("live_grep_args")
-telescope.load_extension("emoji")
 telescope.load_extension("media_files")

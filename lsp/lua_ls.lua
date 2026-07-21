@@ -1,4 +1,4 @@
-vim.lsp.config("lua_ls", {
+return {
   settings = {
     Lua = {
       diagnostics = {
@@ -6,8 +6,8 @@ vim.lsp.config("lua_ls", {
       },
       workspace = {
         library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.stdpath "config" .. "/lua"] = true,
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.stdpath("config") .. "/lua"] = true,
         },
       },
       telemetry = {
@@ -18,8 +18,8 @@ vim.lsp.config("lua_ls", {
         defaultConfig = {
           indent_style = "space",
           indent_size = "2",
-        }
-      }
+        },
+      },
     },
   },
 }

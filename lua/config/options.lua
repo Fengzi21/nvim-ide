@@ -47,4 +47,18 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 -- vim.opt.shellcmdflag = "-ic"
-vim.opt.rtp:append("/opt/homebrew/opt/fzf")
+-- The old hardcoded "/opt/homebrew/opt/fzf" only exists on Apple Silicon
+-- Homebrew installs; guard it so Intel-mac/Linux/Windows don't just get a
+-- silently-broken rtp entry.
+local fzf_paths = {
+  "/opt/homebrew/opt/fzf", -- Apple Silicon Homebrew
+  "/usr/local/opt/fzf", -- Intel macOS Homebrew
+  "/usr/share/doc/fzf", -- common Linux package layout (fzf.vim runtime bits)
+  vim.fn.expand("~/.fzf"), -- fzf installed via its own install script
+}
+for _, path in ipairs(fzf_paths) do
+  if vim.fn.isdirectory(path) == 1 then
+    vim.opt.rtp:append(path)
+    break
+  end
+end

@@ -1,4 +1,4 @@
-vim.lsp.config("mojo", {
+return {
   cmd = { "mojo-lsp-server" },
   filetypes = { "mojo", "🔥" },
 }

@@ -37,6 +37,13 @@ end
 
 -- 运行当前行作为 Shell 命令
 local function run_shell()
+  if vim.fn.executable("bash") == 0 then
+    vim.notify(
+      "bash not found on PATH (on Windows install Git Bash/WSL, or use :RunAsPowershell)",
+      vim.log.levels.WARN
+    )
+    return
+  end
   run_current_line("bash")
 end
 
@@ -122,7 +129,12 @@ vim.api.nvim_create_user_command("Scratch", scratch_buffer, {})
 vim.api.nvim_create_user_command("VScratch", vertical_scratch_buffer, {})
 vim.api.nvim_create_user_command("HScratch", horizontal_scratch_buffer, {})
 
-local function open_file_in_app(app)
+local platform = require("config.util.platform")
+
+-- app_spec: on macOS this should be an .app bundle name/path (used with
+-- `open -a`); on Windows/Linux it should be an executable name on PATH,
+-- since neither platform has an equivalent of macOS's "open -a AppName".
+local function open_file_in_app(app_spec)
   local file = vim.fn.expand("%:p")
 
   if file == "" then
@@ -130,7 +142,21 @@ local function open_file_in_app(app)
     return
   end
 
-  vim.fn.jobstart({ "open", "-a", app, file }, {
+  local cmd
+  if platform.is_mac then
+    cmd = { "open", "-a", app_spec.mac, file }
+  elseif platform.is_windows then
+    -- `start` is a cmd.exe builtin, not an executable, so it must be run via cmd /c
+    cmd = { "cmd.exe", "/c", "start", "", app_spec.windows or app_spec.mac, file }
+  else
+    if not app_spec.linux then
+      vim.notify("No Linux equivalent configured for " .. (app_spec.mac or "this app"), vim.log.levels.WARN)
+      return
+    end
+    cmd = { app_spec.linux, file }
+  end
+
+  vim.fn.jobstart(cmd, {
     detach = true,
     on_stderr = function(_, data)
       if data and #data > 0 then
@@ -141,13 +167,13 @@ local function open_file_in_app(app)
 end
 
 vim.api.nvim_create_user_command("OpenInEdge", function()
-  open_file_in_app("/Applications/Microsoft Edge.app")
+  open_file_in_app({ mac = "Microsoft Edge", windows = "msedge", linux = "microsoft-edge" })
 end, {
   desc = "Open current buffer file in Microsoft Edge",
 })
 
 vim.api.nvim_create_user_command("OpenInUPDF", function()
-  open_file_in_app("/Applications/UPDF.app")
+  open_file_in_app({ mac = "UPDF" })
 end, {
-  desc = "Open current buffer file in UPDF",
+  desc = "Open current buffer file in UPDF (macOS only)",
 })

@@ -49,10 +49,12 @@ dashboard.section.header.opts.hl = "Number"
 dashboard.section.buttons.val = {
   dashboard.button("f", " " .. " Find file", ":Telescope find_files<CR>"),
   dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert<CR>"),
-  dashboard.button("p", " " .. " Find project", ":Telescope projects<CR>"),
+  -- "Find project" button removed along with project.nvim (unmaintained,
+  -- and never actually setup() in this config) -- its ":Telescope projects"
+  -- extension no longer exists.
   dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles<CR>"),
   dashboard.button("t", " " .. " Find text", ":Telescope live_grep<CR>"),
-  dashboard.button("c", " " .. " Config", ":e ~/.config/nvim/init.lua<CR>"),
+  dashboard.button("c", " " .. " Config", (":e " .. vim.fn.stdpath("config") .. "/init.lua<CR>")),
   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 }
 dashboard.section.buttons.opts.hl = "Keyword"

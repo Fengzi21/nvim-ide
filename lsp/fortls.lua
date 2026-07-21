@@ -1,4 +1,4 @@
-vim.lsp.config("fortls", {
+return {
   cmd = {
     "fortls",
     "--hover_signature",
@@ -6,7 +6,7 @@ vim.lsp.config("fortls", {
     "--use_signature_help",
   },
   filetypes = {
-    "f", "F", "f90", "F90", "f95", "F95", "f03", "f08", "fortran"
+    "f", "F", "f90", "F90", "f95", "F95", "f03", "f08", "fortran",
   },
   settings = {
     variableHover = true,
