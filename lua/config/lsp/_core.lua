@@ -87,4 +87,23 @@ M.on_attach = function(client, bufnr)
   illuminate.on_attach(client)
 end
 
+-- NOTE: with Neovim 0.11+'s native `vim.lsp.enable()` + `nvim/lsp/*.lua`
+-- setup, there is no more `require("lspconfig")[server].setup({on_attach=...})`
+-- call site to hook into — that used to be where `M.on_attach` (and thus the
+-- `gd` keymap) got wired up. It must be attached manually via `LspAttach`,
+-- and default capabilities must be set globally via `vim.lsp.config('*', ...)`.
+M.setup()
+
+vim.lsp.config("*", { capabilities = M.capabilities })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client then
+      M.on_attach(client, args.buf)
+    end
+  end,
+})
+
 return M
