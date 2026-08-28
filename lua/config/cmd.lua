@@ -26,13 +26,17 @@ function SwapWordPartsUnderCursor()
   vim.notify("No swap-able variable under cursor (like a_b)", vim.log.levels.WARN)
 end
 
+-- 将 `lines` 插入到光标所在行之后
+local function insert_lines_below_current(lines)
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  vim.api.nvim_buf_set_lines(0, row, row, false, lines)
+end
+
 -- 运行当前行并插到下一行
 local function run_current_line(cmd)
   local line = vim.api.nvim_get_current_line()
   local output = vim.fn.system(cmd, line)
-  local output_lines = vim.split(output, "\n", { plain = true, trimempty = true })
-  local row = vim.api.nvim_win_get_cursor(0)[1]
-  vim.api.nvim_buf_set_lines(0, row, row, false, output_lines)
+  insert_lines_below_current(vim.split(output, "\n", { plain = true, trimempty = true }))
 end
 
 -- 运行当前行作为 Shell 命令
@@ -51,9 +55,7 @@ end
 local function run_python()
   local line = vim.api.nvim_get_current_line()
   local output = vim.fn.system({ "python", "-c", line })
-  local output_lines = vim.split(output, "\n", { plain = true, trimempty = true })
-  local row = vim.api.nvim_win_get_cursor(0)[1]
-  vim.api.nvim_buf_set_lines(0, row, row, false, output_lines)
+  insert_lines_below_current(vim.split(output, "\n", { plain = true, trimempty = true }))
 end
 
 local function create_scratch_buffer(cmd)
@@ -76,11 +78,13 @@ local function vertical_scratch_buffer()
   create_scratch_buffer("vnew")
 end
 
--- Helper to wrap word under cursor
+-- 用 `replacement` 替换光标下的单词（ciw）
+local function replace_word(replacement)
+  vim.cmd("normal! ciw" .. replacement)
+end
+
 local function wrap_word(wrapper)
-  local word = vim.fn.expand("<cword>") -- word under cursor
-  local replacement = wrapper .. word .. wrapper
-  vim.cmd("normal! ciw" .. replacement) -- change inner word
+  replace_word(wrapper .. vim.fn.expand("<cword>") .. wrapper)
 end
 
 -- Create the command
@@ -98,9 +102,7 @@ vim.api.nvim_create_user_command("MarkdownCode", function()
 end, {})
 
 local function warp_by_tag(tag)
-  local word = vim.fn.expand("<cword>") -- word under cursor
-  local replacement = "<" .. tag .. ">" .. word .. "</" .. tag .. ">"
-  vim.cmd("normal! ciw" .. replacement) -- change inner word
+  replace_word("<" .. tag .. ">" .. vim.fn.expand("<cword>") .. "</" .. tag .. ">")
 end
 
 vim.api.nvim_create_user_command("HtmlWrapA", function()

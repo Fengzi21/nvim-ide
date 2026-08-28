@@ -12,15 +12,7 @@ end
 local cmpwindow = cmp.config.window
 
 require("luasnip/loaders/from_vscode").lazy_load()
--- load snippets from path/of/your/nvim/config/snippets
--- require("luasnip").snippets('tex')
 require("luasnip.loaders.from_snipmate").load()
--- require("luasnip.loaders.from_snipmate").lazy_load()
-
-local check_backspace = function()
-  local col = vim.fn.col(".") - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-end
 
 local kind_icons = {
   Text = "",
@@ -78,8 +70,6 @@ cmp.setup({
         luasnip.expand()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
       else
         fallback()
       end

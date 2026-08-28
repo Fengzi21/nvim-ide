@@ -1,7 +1,6 @@
 return {
   "lua_ls",
   "pyright",
-  "pylsp",
   "clangd",
   "fortls",
   "jdtls",

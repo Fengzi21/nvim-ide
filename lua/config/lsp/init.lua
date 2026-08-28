@@ -5,7 +5,7 @@ require("config.lsp._core")
 require("config.lsp.mason")
 
 -- Enable servers (must be explicit in 0.11+)
-require("config.lsp.enable")
+vim.lsp.enable(require("config.lsp.servers"))
 
 require("config.lsp.format.none_ls")
 

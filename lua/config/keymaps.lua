@@ -61,7 +61,6 @@ end
 
 -- netrw --
 -- use NvimTree instead
--- keymap('n', "<leader>e", ":Lex 30<CR>", opts)
 
 -- Buffers --
 for _, m in pairs({ "n", "v", "x" }) do

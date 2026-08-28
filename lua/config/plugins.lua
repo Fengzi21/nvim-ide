@@ -128,8 +128,6 @@ lazy.setup({
     build = "cd app && npm install",
     lazy = false,
   },
-  { "ellisonleao/glow.nvim", lazy = false },
-
   -- Treesitter
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = false },
 

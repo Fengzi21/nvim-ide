@@ -19,7 +19,7 @@ transparent.setup({
     "TelescopeSelection",
     "TelescopePromptTitle",
     "TelescopePromptPrefix",
-    "TelescopePromptCounte",
+    "TelescopePromptCounter",
     "TelescopePromptNormal",
     "TelescopePromptBorder",
     "TelescopeResultsTitle",
@@ -29,6 +29,4 @@ transparent.setup({
     "TelescopePreviewNormal",
     "TelescopePreviewBorder",
   },
-  -- table: groups you don't want to clear
-  exclude_groups = {},
 })
