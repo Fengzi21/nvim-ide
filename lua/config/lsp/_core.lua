@@ -36,13 +36,39 @@ M.setup = function()
 
   vim.diagnostic.config(config)
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  })
+  -- Neovim 0.11 deprecated vim.lsp.with(); wrap the handlers manually so the
+  -- rounded float border keeps working without the deprecation warning.
+  vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
+    config = vim.tbl_deep_extend("force", config or {}, { border = "rounded" })
+    vim.lsp.handlers.hover(_, result, ctx, config)
+  end
 
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  })
+  vim.lsp.handlers["textDocument/signatureHelp"] = function(_, result, ctx, config)
+    config = vim.tbl_deep_extend("force", config or {}, { border = "rounded" })
+    vim.lsp.handlers.signature_help(_, result, ctx, config)
+  end
+end
+
+-- Neovim 0.12 deprecates the dot-call form `client.supports_method(...)` in
+-- favor of `client:supports_method(...)`. vim-illuminate still uses the dot
+-- form on every LspAttach, spamming a deprecation warning. Replace the client
+-- method with a shim that supports both call styles and forwards to the
+-- original implementation, bypassing the deprecation path.
+local function patch_supports_method(client)
+  local ok, original = pcall(function()
+    return vim.lsp.client.supports_method
+  end)
+  if not ok or type(original) ~= "function" then
+    return
+  end
+  client.supports_method = function(a, b, c)
+    if a == client then
+      -- method call: client:supports_method(method, bufnr)
+      return original(client, b, c)
+    end
+    -- dot call: client.supports_method(method, bufnr)
+    return original(client, a, b)
+  end
 end
 
 local function lsp_keymaps(bufnr)
@@ -57,6 +83,8 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
+  patch_supports_method(client)
+
   -- server_capabilities uses LSP-protocol camelCase field names; the old
   -- snake_case aliases (document_formatting) are no longer normalized by
   -- recent nvim-lspconfig versions and silently do nothing.

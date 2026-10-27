@@ -44,7 +44,10 @@ lazy.setup({
   { "folke/tokyonight.nvim", lazy = false },
   { "tanvirtin/monokai.nvim", lazy = false },
 
-  { "norcalli/nvim-colorizer.lua", lazy = false },
+  -- NOTE: the maintained fork (catgoose/nvim-colorizer.lua, formerly
+  -- NvChad/nvim-colorizer.lua) fixes the vim.tbl_flatten deprecation that the
+  -- unmaintained norcalli/nvim-colorizer.lua triggers on Neovim 0.11.
+  { "catgoose/nvim-colorizer.lua", lazy = false },
   { "windwp/nvim-autopairs", lazy = false },
   { "xiyaowong/nvim-transparent", lazy = false },
 

@@ -8,6 +8,8 @@ if not ok_mason_lspconfig then
   return
 end
 
+local platform = require("config.util.platform")
+
 mason.setup({
   ui = {
     border = "rounded",
@@ -24,13 +26,33 @@ for _, name in ipairs(available_servers) do
   available[name] = true
 end
 
+-- Servers Mason installs through a language toolchain instead of a prebuilt
+-- binary. On a fresh Windows install these CLIs are often missing, and Mason's
+-- automatic installer then prints "failed to install <server>" on every
+-- startup. Detect them up front and skip with an actionable hint instead.
+local prerequisites = {
+  -- gopls = "go",
+  pyright = "npm",
+  bashls = "npm",
+  jsonls = "npm",
+  yamlls = "npm",
+}
+
+local install_hints = {
+  -- go = "winget install GoLang.Go",
+  npm = "winget install OpenJS.NodeJS.LTS",
+}
+
 local ensure = {}
 local skipped = {}
+local missing = {}
 for _, name in ipairs(desired_servers) do
-  if available[name] then
-    table.insert(ensure, name)
-  else
+  if not available[name] then
     table.insert(skipped, name)
+  elseif prerequisites[name] and not platform.has_exe(prerequisites[name]) then
+    table.insert(missing, name)
+  else
+    table.insert(ensure, name)
   end
 end
 
@@ -38,6 +60,21 @@ if #skipped > 0 then
   vim.schedule(function()
     vim.notify(
       "Mason: skipping unsupported LSP servers: " .. table.concat(skipped, ", "),
+      vim.log.levels.WARN
+    )
+  end)
+end
+
+if #missing > 0 then
+  vim.schedule(function()
+    local msgs = {}
+    for _, name in ipairs(missing) do
+      local cli = prerequisites[name]
+      local hint = install_hints[cli]
+      table.insert(msgs, hint and (name .. " (needs `" .. cli .. "`, try: " .. hint .. ")") or (name .. " (needs `" .. cli .. "`)"))
+    end
+    vim.notify(
+      "Mason: skipped servers with missing toolchains — " .. table.concat(msgs, "; "),
       vim.log.levels.WARN
     )
   end)

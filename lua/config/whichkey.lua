@@ -73,6 +73,7 @@ local mappings = {
     name = "Execute",
     b = { ":RunAsBash<CR>", "Run current line as bash" },
     p = { ":RunAsPython<CR>", "Run current line as python" },
+    s = { ":RunAsPowershell<CR>", "Run current line as powershell" },
   },
 
   -- For Telescope

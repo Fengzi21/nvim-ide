@@ -30,3 +30,14 @@ transparent.setup({
     "TelescopePreviewBorder",
   },
 })
+
+-- Default to transparent on fresh installs. The plugin persists its state to
+-- stdpath('data')/transparent_cache, so a brand-new Windows machine has no
+-- cache and therefore starts opaque — the README's manual `:TransparentEnable`
+-- step is easy to miss. Enable once when no saved state exists; afterwards the
+-- plugin's own cache (read during require) is respected, so `:TransparentToggle`
+-- still works as expected.
+local cache = vim.fn.stdpath("data") .. package.config:sub(1, 1) .. "transparent_cache"
+if vim.fn.filereadable(cache) ~= 1 then
+  vim.g.transparent_enabled = true
+end

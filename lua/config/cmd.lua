@@ -58,6 +58,18 @@ local function run_python()
   insert_lines_below_current(vim.split(output, "\n", { plain = true, trimempty = true }))
 end
 
+-- 运行当前行作为 PowerShell 命令（Windows 上 bash 的替代，见 :RunAsBash 的提示）
+local function run_powershell()
+  local platform = require("config.util.platform")
+  if not platform.is_windows then
+    vim.notify(":RunAsPowershell is intended for Windows", vim.log.levels.WARN)
+    return
+  end
+  local line = vim.api.nvim_get_current_line()
+  local output = vim.fn.system({ platform.default_shell(), "-NoProfile", "-Command", line })
+  insert_lines_below_current(vim.split(output, "\n", { plain = true, trimempty = true }))
+end
+
 local function create_scratch_buffer(cmd)
   vim.cmd(cmd)
   vim.cmd("file *scratch*")
@@ -127,6 +139,7 @@ end, {})
 vim.api.nvim_create_user_command("SwapVar", SwapWordPartsUnderCursor, {})
 vim.api.nvim_create_user_command("RunAsBash", run_shell, {})
 vim.api.nvim_create_user_command("RunAsPython", run_python, {})
+vim.api.nvim_create_user_command("RunAsPowershell", run_powershell, {})
 vim.api.nvim_create_user_command("Scratch", scratch_buffer, {})
 vim.api.nvim_create_user_command("VScratch", vertical_scratch_buffer, {})
 vim.api.nvim_create_user_command("HScratch", horizontal_scratch_buffer, {})

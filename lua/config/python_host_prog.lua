@@ -6,9 +6,15 @@ local platform = require("config.util.platform")
 
 local function first_existing(candidates)
   for _, path in ipairs(candidates) do
-    local expanded = vim.fn.expand(path)
-    if vim.fn.executable(expanded) == 1 then
-      return expanded
+    -- `vim.fn.glob` both expands `~`/env vars *and* wildcards (unlike
+    -- `vim.fn.expand`, which leaves `Python3*` patterns untouched), so the
+    -- Windows `~/AppData/Local/Programs/Python/Python3*/python.exe` candidate
+    -- actually resolves to a real interpreter.
+    local matches = vim.fn.glob(path, false, true)
+    for _, expanded in ipairs(matches) do
+      if vim.fn.executable(expanded) == 1 then
+        return expanded
+      end
     end
   end
   return nil

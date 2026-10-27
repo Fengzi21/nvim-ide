@@ -3,6 +3,15 @@ if not status_ok then
   return
 end
 
+local platform = require("config.util.platform")
+
+-- The `sh` REPL used to hardcode `zsh`, which doesn't exist on Windows.
+-- Fall back to PowerShell/pwsh there, and to the user's login shell elsewhere.
+local sh_command = "zsh"
+if platform.is_windows then
+  sh_command = platform.default_shell()
+end
+
 iron.setup({
   config = {
     -- Whether a repl should be discarded or not
@@ -10,7 +19,7 @@ iron.setup({
     -- Your repl definitions come here
     repl_definition = {
       sh = {
-        command = { "zsh" },
+        command = { sh_command },
       },
       python = {
         command = { "ipython" },

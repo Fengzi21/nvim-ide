@@ -10,6 +10,6 @@ return {
   "jsonls",
   "yamlls",
   "rust_analyzer",
-  "gopls",
+  -- "gopls",
   "tinymist",
 }

@@ -17,7 +17,11 @@ end
 -- auto-load anything under stdpath('data')/site/pack/*/start.
 -- Since this config is now fully lazy.nvim-managed, remove that packpath to avoid
 -- double-loading old plugins (e.g. packer.bak leftovers).
-vim.opt.packpath:remove(vim.fn.stdpath("data") .. "/site")
+-- NOTE: use vim.fs.joinpath so Windows gets backslash separators that actually
+-- match the entries Neovim stores in packpath; `.. "/site"` produces a mixed
+-- path that fails the exact-string compare and silently leaves pack/*/start
+-- enabled on Windows.
+vim.opt.packpath:remove(vim.fs.joinpath(vim.fn.stdpath("data"), "site"))
 
 
 -- Disable providers we don't use to speed up startup time
